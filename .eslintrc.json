@@ -1,3 +1,8 @@
 {
-  "extends": ["next/core-web-vitals", "eslint-config-prettier"]
+  "extends": ["next/core-web-vitals", "eslint-config-prettier", "standard"],
+  "rules": {
+    "prettier/prettier": "error",
+    "space-before-function-paren": ["error", "never"]
+  },
+  "plugins": ["prettier"]
 }
