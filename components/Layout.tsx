@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import React from 'react'
 
-type PageProps = {
+type LayoutProps = {
   title: string
   description: string
   children: React.ReactNode
 }
 
-const Page: React.FC<PageProps> = ({ title, description, children }) => {
+const Layout: React.FC<LayoutProps> = ({ title, description, children }) => {
   return (
     <>
       <Head>
@@ -20,4 +20,4 @@ const Page: React.FC<PageProps> = ({ title, description, children }) => {
   )
 }
 
-export default Page
+export default Layout

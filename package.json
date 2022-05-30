@@ -13,8 +13,11 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@nhost/nextjs": "^1.2.8",
+    "@nhost/react": "^0.7.8",
     "autoprefixer": "^10.4.7",
     "eslint-config-prettier": "^8.5.0",
+    "graphql": "^16.5.0",
     "next": "12.1.6",
     "postcss": "^8.4.14",
     "prettier": "^2.6.2",
