@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
+import Header from './Header'
 
 type LayoutProps = {
   title: string
@@ -15,6 +16,7 @@ const Layout: React.FC<LayoutProps> = ({ title, description, children }) => {
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       {children}
     </>
   )

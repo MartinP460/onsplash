@@ -114,7 +114,7 @@ function Signup() {
       </form>
       {isError && <p>{error?.message}</p>}
       <p className="mt-10">
-        Already have an account?
+        Already have an account?{' '}
         <Link href="/login">
           <a>Log in</a>
         </Link>
