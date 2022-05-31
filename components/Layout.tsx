@@ -4,11 +4,15 @@ import Header from './Header'
 
 type LayoutProps = {
   title: string
-  description: string
+  description?: string
   children: React.ReactNode
 }
 
-const Layout: React.FC<LayoutProps> = ({ title, description, children }) => {
+const Layout: React.FC<LayoutProps> = ({
+  title,
+  description = 'Onsplash is a clone of Unsplash, so all credit goes to them.',
+  children
+}) => {
   return (
     <>
       <Head>

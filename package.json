@@ -13,8 +13,10 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.5",
     "@nhost/nextjs": "^1.2.8",
     "@nhost/react": "^0.7.8",
+    "@nhost/react-apollo": "^4.2.9",
     "autoprefixer": "^10.4.7",
     "eslint-config-prettier": "^8.5.0",
     "graphql": "^16.5.0",
