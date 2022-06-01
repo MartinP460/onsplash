@@ -14,15 +14,15 @@ const Layout: React.FC<LayoutProps> = ({
   children
 }) => {
   return (
-    <>
+    <div className="text-sm">
       <Head>
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {children}
-    </>
+      <main>{children}</main>
+    </div>
   )
 }
 

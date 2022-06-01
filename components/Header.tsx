@@ -1,43 +1,23 @@
-import Link from 'next/link'
 import { useAuthenticationStatus, useSignOut } from '@nhost/nextjs'
+import Link from 'next/link'
+import { AcademicCapIcon } from '@heroicons/react/solid'
+import Searchbar from './Searchbar'
+import Menu from './Menu'
 
 function Header() {
   const { isAuthenticated } = useAuthenticationStatus()
   const { signOut } = useSignOut()
 
   return (
-    <header className="bg-gray-200">
-      <div className="flex justify-end">
-        <div className="flex items-center">
-          {isAuthenticated ? (
-            <>
-              <Link href="/profile">
-                <a className="px-4 py-2 text-sm font-medium text-gray-800">
-                  Profile
-                </a>
-              </Link>
-              <button
-                onClick={signOut}
-                className="px-4 py-2 text-sm font-medium text-gray-800"
-              >
-                Sign out
-              </button>
-            </>
-          ) : (
-            <>
-              <Link href="/login">
-                <a className="px-4 py-2 text-sm font-medium text-gray-800">
-                  Log in
-                </a>
-              </Link>
-              <Link href="/signup">
-                <a className="px-4 py-2 text-sm font-medium text-gray-800">
-                  Sign up
-                </a>
-              </Link>
-            </>
-          )}
+    <header>
+      <div className="flex items-center p-2 px-3 gap-3">
+        <div className="flex-none">
+          <Link href="/">
+            <AcademicCapIcon className="w-8 h-8" />
+          </Link>
         </div>
+        <Searchbar />
+        <Menu />
       </div>
     </header>
   )

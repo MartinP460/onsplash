@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .transition-fast {
+    transition: all 0.15s ease-in-out;
+  }
+}
