@@ -8,7 +8,7 @@ type FormValues = {
   password: string
 }
 
-function Signin() {
+function Login() {
   const {
     register,
     handleSubmit,
@@ -76,4 +76,4 @@ function Signin() {
   )
 }
 
-export default Signin
+export default Login

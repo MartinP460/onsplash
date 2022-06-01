@@ -1,10 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
-import { useAuthenticationStatus } from '@nhost/nextjs'
-import { useRouter } from 'next/router'
 import { useUserContext } from '../utils/UserProvider'
 import { UPDATE_USER_MUTATION } from '../graphql/user'
+import { authProtected } from '../components/authProtected'
 import Layout from '../components/Layout'
 
 type FormValues = {
@@ -17,8 +16,6 @@ function Account() {
   const user = useUserContext()
   const [mutateUser, { loading: updatingProfile }] =
     useMutation(UPDATE_USER_MUTATION)
-  const router = useRouter()
-  const { isLoading, isAuthenticated } = useAuthenticationStatus()
 
   const {
     register,
@@ -54,10 +51,6 @@ function Account() {
 
   const disableForm = updatingProfile || !isDirty
 
-  if (!isLoading && !isAuthenticated) {
-    router.push('/')
-  }
-
   return (
     <Layout title="Account">
       <h2>Account</h2>
@@ -84,4 +77,4 @@ function Account() {
   )
 }
 
-export default Account
+export default authProtected(Account)
