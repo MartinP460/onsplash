@@ -6,4 +6,24 @@
   .transition-fast {
     transition: all 0.15s ease-in-out;
   }
+
+  .text-primary {
+    @apply text-gray-500;
+  }
+
+  .text-primary-hover {
+    @apply text-gray-700;
+  }
+
+  .bg-text {
+    @apply bg-gray-200;
+  }
+
+  .border-text {
+    @apply border-gray-200;
+  }
+
+  .border-text-hover {
+    @apply border-gray-400;
+  }
 }
