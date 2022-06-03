@@ -14,7 +14,7 @@ function Signup() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, isDirty }
   } = useForm<FormValues>()
   const router = useRouter()
 
@@ -38,19 +38,10 @@ function Signup() {
     })
   }
 
-  const disableForm = isLoading || needsEmailVerification
+  const disableForm = isLoading || !isDirty
 
   if (isSuccess) {
     router.push('/')
-  }
-
-  if (needsEmailVerification) {
-    return (
-      <p>
-        An email has been sent to your email address. Please click the link in
-        the email to verify your email address.
-      </p>
-    )
   }
 
   return (

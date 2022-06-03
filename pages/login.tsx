@@ -1,7 +1,10 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignInEmailPassword } from '@nhost/nextjs'
 import { useRouter } from 'next/router'
-import Link from 'next/link'
+import { AcademicCapIcon } from '@heroicons/react/solid'
+import Link from '../components/Link'
+import Input from '../components/Input'
+import Button from '../components/Button'
 
 type FormValues = {
   email: string
@@ -12,66 +15,61 @@ function Login() {
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    formState: { errors, isDirty }
   } = useForm<FormValues>()
   const router = useRouter()
 
-  const {
-    signInEmailPassword,
-    isLoading,
-    isSuccess,
-    needsEmailVerification,
-    isError,
-    error
-  } = useSignInEmailPassword()
+  const { signInEmailPassword, isLoading, isSuccess, isError, error } =
+    useSignInEmailPassword()
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const { email, password } = data
-    await signInEmailPassword(email, password)
+    try {
+      await signInEmailPassword(email, password)
+    } catch {
+      // display error toast
+    }
   }
-
-  const disableForm = isLoading || needsEmailVerification
 
   if (isSuccess) {
     router.push('/')
   }
 
-  if (needsEmailVerification) {
-    return (
-      <p>
-        An email has been sent to your email address. Please click the link in
-        the email to verify your email address.
-      </p>
-    )
-  }
+  const disableForm = isLoading || !isDirty
 
   return (
-    <div className="w-1/2 mx-auto mt-4">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          placeholder="Email"
-          {...register('email', { required: true })}
-          className="p-2 border-2 border-gray-400 rounded"
-        />
-        {errors.email && <span>This field is required.</span>}
-        <input
-          type="password"
-          placeholder="Password"
-          {...register('password', { required: true })}
-          className="p-2 border-2 border-gray-400 rounded"
-        />
-        {errors.email && <span>This field is required.</span>}
-        <button type="submit" disabled={disableForm} className="bg-blue">
-          {isLoading ? 'Loading...' : 'Sign In'}
-        </button>
-        {isError && <p>{error?.message}</p>}
-      </form>
-      <p>
-        No account yet?{' '}
-        <Link href="/sign-up">
-          <a>Sign up</a>
-        </Link>
-      </p>
+    <div className="flex items-center h-screen">
+      <div className="flex flex-col items-center w-screen p-3 md:w-3/5 lg:w-2/5 mx-auto">
+        <div className="flex flex-col items-center ">
+          <AcademicCapIcon className="w-16 h-16" />
+          <h1 className="text-2xl font-bold mt-4">Login</h1>
+          <p className="mt-3">Welcome back.</p>
+        </div>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col gap-7 w-full mt-12"
+        >
+          <Input
+            label="Email"
+            error={errors.email && 'This field is required.'}
+            {...register('email', { required: true })}
+          />
+          <Input
+            label="Password"
+            altLabel={<Link href="/signup">Forgot your password?</Link>}
+            type="password"
+            error={errors.password && 'This field is required.'}
+            {...register('password', { required: true })}
+          />
+          <Button variation="filled" type="submit" disabled={disableForm}>
+            {isLoading ? 'Loading...' : 'Sign In'}
+          </Button>
+          {isError && <p>{error?.message}.</p>}
+        </form>
+        <div className="flex items-center justify-center p-7 border w-full mt-8">
+          Don't have an account?&nbsp;<Link href="/sign-up">Join Onsplash</Link>
+        </div>
+      </div>
     </div>
   )
 }
