@@ -1,31 +1,40 @@
 import { useState } from 'react'
-import { Combobox } from '@headlessui/react'
 import { SearchIcon } from '@heroicons/react/solid'
+import useSuggestions from './useSuggestions'
+import Link from 'next/link'
 
 function Searchbar() {
-  const [query, setQuery] = useState('')
+  const [suggestions, setQuery] = useSuggestions()
+  const [focused, setFocused] = useState(false)
 
   return (
-    <Combobox
-      value={query}
-      onChange={setQuery}
-      className="w-full relative bg-gray-200 border active:border-gray-300 rounded-full pointer-events-none hover:bg-transparent transition-fast"
-      as="div"
-    >
-      <div className="flex items-center">
-        <SearchIcon className="h-5 ml-4 mr-1 text-gray-500" />
-        <Combobox.Input
-          onChange={(e) => setQuery(e.target.value)}
-          className="w-3/5 h-9 px-2 bg-inherit outline-none pointer-events-auto"
-          placeholder="Search photos"
-        />
+    <div className="relative w-full">
+      <div className="bg-gray-200 border active:border-gray-300 rounded-full pointer-events-none hover:bg-transparent transition-fast">
+        <div className="flex items-center">
+          <SearchIcon className="h-5 ml-4 mr-1 text-gray-500" />
+          <input
+            onFocus={() => setFocused(true)}
+            onBlur={() => setTimeout(() => setFocused(false), 90)}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full h-9 px-2 bg-inherit outline-none pointer-events-auto"
+            placeholder="Search photos"
+          />
+        </div>
       </div>
-      <Combobox.Options className="absolute w-full z-10 mt-1 border border-gray-200 rounded p-4 bg-white">
-        <Combobox.Option value="cats">Cats</Combobox.Option>
-        <Combobox.Option value="dogs">Dogs</Combobox.Option>
-        <Combobox.Option value="mice">Mice</Combobox.Option>
-      </Combobox.Options>
-    </Combobox>
+      <ul
+        className={`absolute w-full z-10 mt-1 border border-gray-200 rounded-lg bg-white shadow ${
+          suggestions.length !== 0 && focused ? 'block' : 'hidden'
+        }`}
+      >
+        {suggestions.map((suggestion) => (
+          <li key={suggestion} className="py-2 px-3 my-1 hover:bg-gray-100">
+            <Link href={`/s?query=${suggestion}`}>
+              <a className="block h-full">{suggestion}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }
 
