@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { searchSuggestions } from '../utils/searchSuggestions'
+import { searchSuggestions } from '../utils/data'
 
 function useSuggestions() {
   const [query, setQuery] = useState('')
@@ -14,7 +14,7 @@ function useSuggestions() {
           .sort((a, b) => a.indexOf(query) - b.indexOf(query))
           .slice(0, 5)
 
-  return [suggestions, setQuery] as const
+  return [suggestions, query, setQuery] as const
 }
 
 export default useSuggestions
