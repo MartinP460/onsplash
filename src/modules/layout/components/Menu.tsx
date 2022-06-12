@@ -1,7 +1,7 @@
 import { Popover } from '@headlessui/react'
 import { MenuIcon } from '@heroicons/react/solid'
 
-function Menu() {
+const Menu = () => {
   return (
     <Popover className="flex items-center relative">
       <Popover.Button className="outline-none">

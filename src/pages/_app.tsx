@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { NhostNextProvider, NhostClient } from '@nhost/nextjs'
 import { NhostApolloProvider } from '@nhost/react-apollo'
-import { UserProvider } from '../utils/UserProvider'
+import { UserProvider } from '../common/utils/UserProvider'
 import '../styles/globals.css'
 
 const nhost = new NhostClient({

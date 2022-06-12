@@ -1,14 +1,14 @@
 import { useAuthenticationStatus } from '@nhost/nextjs'
 import Link from 'next/link'
 import { AcademicCapIcon } from '@heroicons/react/solid'
-import { useUserContext } from '../utils/UserProvider'
+import { useUserContext } from '../../../common/utils/UserProvider'
 import Searchbar from './Searchbar'
 import Menu from './Menu'
-import NavLink from './NavLink'
-import Button from './Button'
+import NavLink from '../../../common/components/NavLink'
+import Button from '../../../common/components/Button'
 import ProfileIcon from './ProfileIcon'
 
-function Header() {
+const Header = () => {
   const user = useUserContext()
   const { isAuthenticated } = useAuthenticationStatus()
 
@@ -28,7 +28,7 @@ function Header() {
             {isAuthenticated ? (
               <>
                 <li>
-                  <Button>Submit a photo</Button>
+                  <Button variation="outline">Submit a photo</Button>
                 </li>
                 <li>
                   <ProfileIcon avatarUrl={user?.avatarUrl} />

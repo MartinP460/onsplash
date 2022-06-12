@@ -6,7 +6,7 @@ interface ProfileIconProps {
   avatarUrl: string
 }
 
-function ProfileIcon({ avatarUrl }: ProfileIconProps) {
+const ProfileIcon = ({ avatarUrl }: ProfileIconProps) => {
   const avatarExists = avatarUrl && !(avatarUrl.slice(-5) === 'blank')
 
   return (

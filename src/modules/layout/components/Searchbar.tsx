@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { SearchIcon, XIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
-import useSuggestions from './useSuggestions'
+import useSuggestions from '../hooks/useSuggestions'
 import SearchSuggestions from './SearchSuggestions'
 import TrendingSuggestions from './TrendingSuggestions'
 
-function Searchbar() {
+const Searchbar = () => {
   const router = useRouter()
   const [suggestions, query, setQuery] = useSuggestions()
   const [focused, setFocused] = useState(false)

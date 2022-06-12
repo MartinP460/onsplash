@@ -1,12 +1,12 @@
 import Link from 'next/link'
 
-function SearchSuggestions({
+const SearchSuggestions = ({
   suggestions,
   show
 }: {
   suggestions: string[]
   show: boolean
-}) {
+}) => {
   return (
     <ul
       className={`absolute w-full z-10 mt-1 border border-text rounded-lg bg-white shadow ${

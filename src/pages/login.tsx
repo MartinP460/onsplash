@@ -2,16 +2,16 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignInEmailPassword } from '@nhost/nextjs'
 import { useRouter } from 'next/router'
 import { AcademicCapIcon } from '@heroicons/react/solid'
-import Link from '../components/Link'
-import Input from '../components/Input'
-import Button from '../components/Button'
+import Link from '../common/components/Link'
+import Input from '../common/components/Input'
+import Button from '../common/components/Button'
 
 type FormValues = {
   email: string
   password: string
 }
 
-function Login() {
+const Login = () => {
   const {
     register,
     handleSubmit,

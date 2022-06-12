@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useAuthenticationStatus } from '@nhost/nextjs'
 import { ElementType } from 'react'
-import Layout from './Layout'
+import Layout from '../../modules/layout/components/Layout'
 
 export function authProtected(Comp: ElementType) {
   return function AuthProtected(props: any) {

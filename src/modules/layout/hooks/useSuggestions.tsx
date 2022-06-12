@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { searchSuggestions } from '../utils/data'
+import { searchSuggestions } from '../../../common/utils/data'
 
-function useSuggestions() {
+const useSuggestions = () => {
   const [query, setQuery] = useState('')
 
   const suggestions =

@@ -6,7 +6,7 @@ interface LinkProps {
   children: ReactNode
 }
 
-function Link({ href, children }: LinkProps) {
+const Link = ({ href, children }: LinkProps) => {
   return (
     <NextLink href={href}>
       <a className="underline text-gray-500">{children}</a>

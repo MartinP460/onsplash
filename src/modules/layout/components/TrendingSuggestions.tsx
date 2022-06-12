@@ -1,10 +1,10 @@
-import { trendingSearches, trendingTopics } from '../utils/data'
+import { trendingSearches, trendingTopics } from '../../../common/utils/data'
 import { TrendingUpIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 import Image from 'next/image'
-import Button from './Button'
+import Button from '../../../common/components/Button'
 
-function TrendingSuggestions({ show }: { show: boolean }) {
+const TrendingSuggestions = ({ show }: { show: boolean }) => {
   return (
     <div
       className={`absolute w-full z-10 mt-1 border border-text rounded-lg bg-white shadow hidden ${

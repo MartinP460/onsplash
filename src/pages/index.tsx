@@ -1,5 +1,5 @@
 import { NextPage } from 'next'
-import Page from '../components/Layout'
+import Page from '../modules/layout/components/Layout'
 
 const Index: NextPage = () => {
   return (

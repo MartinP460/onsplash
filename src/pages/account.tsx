@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
-import { useUserContext } from '../utils/UserProvider'
-import { UPDATE_USER_MUTATION } from '../graphql/user'
-import { authProtected } from '../components/authProtected'
-import Layout from '../components/Layout'
+import { useUserContext } from '../common/utils/UserProvider'
+import { UPDATE_USER_MUTATION } from '../common/graphql/user'
+import { authProtected } from '../common/hoc/authProtected'
+import Layout from '../modules/layout/components/Layout'
 
 type FormValues = {
   firstName: string
@@ -12,7 +12,7 @@ type FormValues = {
   email: string
 }
 
-function Account() {
+const Account = () => {
   const user = useUserContext()
   const [mutateUser, { loading: updatingProfile }] =
     useMutation(UPDATE_USER_MUTATION)

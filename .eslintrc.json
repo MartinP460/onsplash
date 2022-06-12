@@ -1,9 +1,10 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": ["next/core-web-vitals", "eslint-config-prettier", "standard"],
   "rules": {
     "prettier/prettier": "error",
     "space-before-function-paren": 0,
     "multiline-ternary": 0
   },
-  "plugins": ["prettier"]
+  "plugins": ["@typescript-eslint", "prettier"]
 }

@@ -6,7 +6,7 @@ interface NavLinkProps {
   children: ReactNode
 }
 
-function NavLink({ href, children, ...rest }: NavLinkProps) {
+const NavLink = ({ href, children, ...rest }: NavLinkProps) => {
   return (
     <Link href={href} {...rest}>
       <a className="text-primary font-semibold hover:text-primary-hover">
