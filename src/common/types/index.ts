@@ -1,6 +1,6 @@
 import { User } from '@nhost/core'
 
-interface PostData {
+export interface Post {
   id: string
   description: string
   url: string
@@ -9,5 +9,3 @@ interface PostData {
   views: number
   user: User
 }
-
-export type Post = PostData
