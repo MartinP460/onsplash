@@ -6,7 +6,7 @@ import Searchbar from './Searchbar'
 import Menu from './Menu'
 import NavLink from '../../../common/components/NavLink'
 import Button from '../../../common/components/Button'
-import ProfileIcon from './ProfileIcon'
+import ProfileDropdown from './ProfileDropdown'
 
 const Header = () => {
   const user = useUserContext()
@@ -31,7 +31,7 @@ const Header = () => {
                   <Button variation="outline">Submit a photo</Button>
                 </li>
                 <li>
-                  <ProfileIcon avatarUrl={user?.avatarUrl} />
+                  <ProfileDropdown user={user} />
                 </li>
               </>
             ) : (

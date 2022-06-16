@@ -1,6 +1,7 @@
 import { Post } from '../../common/types/index'
 import { splitArrayToThreeSubArrays } from '../../common/utils/helpers'
 import { useState } from 'react'
+import Thumbnail from '../../common/components/Thumbnail'
 import PostModal from '../../common/components/PostModal'
 
 interface HeroProps {
@@ -20,16 +21,14 @@ const Gallery = ({ posts }: HeroProps) => {
 
   return (
     <>
-      <div className="max-w-7xl mx-auto px-5 mt-10 w-full grid grid-cols-3 grid-rows-1 gap-5">
+      <div className="max-w-7xl mx-auto md:px-5 w-full md:grid md:grid-cols-3 md:grid-rows-1 md:gap-5">
         {postsArray?.map((splitPosts, i) => (
           <div key={i} className="grid grid-cols-1 h-fit gap-5">
             {splitPosts.map((post) => (
-              <img
+              <Thumbnail
                 key={post.id}
-                src={post.url}
-                alt={post.description}
-                onClick={() => handleModalOpen(post)}
-                className="object-contain hover:cursor-zoom-in"
+                post={post}
+                onImageClick={() => handleModalOpen(post)}
               />
             ))}
           </div>

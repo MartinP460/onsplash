@@ -7,7 +7,7 @@ interface HeroProps {
 
 const Hero = ({ post }: HeroProps) => {
   return (
-    <div className="relative text-white leading-relaxed md:h-[500px]">
+    <div className="relative text-white leading-relaxed md:h-[500px] md:mb-10">
       <div className="px-4 pt-10 pb-16">
         <h1 className="text-2xl font-bold mb-2">Unsplash</h1>
         <p>Not the internet's source of freely-usable images.</p>
