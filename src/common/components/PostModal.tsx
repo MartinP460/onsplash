@@ -1,30 +1,81 @@
 import { Post } from '../types/index'
-import { Dialog } from '@headlessui/react'
-import { XIcon } from '@heroicons/react/solid'
+import {
+  HeartIcon,
+  PlusIcon,
+  DotsHorizontalIcon,
+  ShareIcon,
+  InformationCircleIcon,
+  CalendarIcon
+} from '@heroicons/react/solid'
+import TimeAgo from 'react-timeago'
+import Avatar from './Avatar'
+import Button from './Button'
 
 interface PostModalProps {
-  isOpen: boolean
-  onClose: () => void
-  post?: Post | null
+  post: Post
 }
 
-const PostModal = ({ isOpen, onClose, post }: PostModalProps) => {
+const PostModal = ({ post }: PostModalProps) => {
   return (
-    <Dialog open={isOpen} onClose={onClose}>
-      <button
-        type="button"
-        className="fixed z-20 top-0 outline-none"
-        onClick={onClose}
-      >
-        <XIcon className="w-6 h-6 m-2 text-gray-200 hover:text-white transition-fast" />
-      </button>
-      <div className="fixed inset-0 bg-black/30" aria-hidden></div>
-      <div className="fixed inset-0 flex justify-center">
-        <Dialog.Panel className="w-11/12 mt-4 h-32 bg-white rounded">
-          <div className="text-2xl">{post?.description}</div>
-        </Dialog.Panel>
+    <>
+      <div className="flex justify-between">
+        <Avatar user={post.user} />
+        <div className="flex gap-2 items-center">
+          <Button variation="outline">
+            <HeartIcon className="h-5 w-5" />
+          </Button>
+          <Button variation="outline">
+            <PlusIcon className="h-5 w-5" />
+          </Button>
+          <Button variation="outline">Download</Button>
+        </div>
       </div>
-    </Dialog>
+      <img
+        src={post.url}
+        alt={post.description}
+        className="max-h-[75%] mt-4 mx-auto"
+      />
+      <div className="flex justify-between mt-5">
+        <div className="flex gap-x-4 sm:gap-x-8 md:gap-x-24">
+          <span>
+            <p className="text-sm text-primary w-fit">Views</p>
+            <p className="font-semibold">{post.views}</p>
+          </span>
+          <span>
+            <p className="text-sm text-primary w-fit">Downloads</p>
+            <p className="font-semibold">--</p>
+          </span>
+        </div>
+        <div className="flex items-center gap-4">
+          <Button
+            variation="outline"
+            className="inline-flex gap-2 items-center"
+          >
+            <ShareIcon className="h-5 w-5" />
+            <p className="hidden md:inline">Share</p>
+          </Button>
+          <Button
+            variation="outline"
+            className="inline-flex gap-2 items-center"
+          >
+            <InformationCircleIcon className="h-5 w-5" />
+            <p className="hidden md:inline">Info</p>
+          </Button>
+          <Button variation="outline">
+            <DotsHorizontalIcon className="h-5 w-5" />
+          </Button>
+        </div>
+      </div>
+      <div className="flex mt-4">
+        <div className="w-full">
+          <span className="inline-flex items-center text-primary gap-2">
+            <CalendarIcon className="h-4 w-4" />
+            <TimeAgo date={post.created_at} />
+          </span>
+        </div>
+        <div className="w-full text-sm">{post.description}</div>
+      </div>
+    </>
   )
 }
 

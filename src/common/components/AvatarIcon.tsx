@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { UserCircleIcon } from '@heroicons/react/solid'
 
 interface AvatarIconProps {
-  url: string
+  url?: string
   width?: number
 }
 

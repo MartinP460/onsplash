@@ -2,6 +2,7 @@ import { Post } from '../../common/types/index'
 import { splitArrayToThreeSubArrays } from '../../common/utils/helpers'
 import { useState } from 'react'
 import Thumbnail from '../../common/components/Thumbnail'
+import Modal from '../../common/components/Modal'
 import PostModal from '../../common/components/PostModal'
 
 interface HeroProps {
@@ -34,11 +35,9 @@ const Gallery = ({ posts }: HeroProps) => {
           </div>
         ))}
       </div>
-      <PostModal
-        isOpen={isOpen}
-        onClose={() => setIsOpen(false)}
-        post={activePost}
-      />
+      <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+        {activePost && <PostModal post={activePost} />}
+      </Modal>
     </>
   )
 }
