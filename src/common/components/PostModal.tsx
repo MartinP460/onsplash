@@ -12,41 +12,59 @@ import Avatar from './Avatar'
 import Button from './Button'
 
 interface PostModalProps {
-  post: Post
+  post: Post | undefined
 }
 
 const PostModal = ({ post }: PostModalProps) => {
   return (
     <>
-      <div className="flex justify-between">
-        <Avatar user={post.user} />
-        <div className="flex gap-2 items-center">
-          <Button variation="outline">
-            <HeartIcon className="h-5 w-5" />
-          </Button>
-          <Button variation="outline">
-            <PlusIcon className="h-5 w-5" />
-          </Button>
+      <div className="flex flex-col md:flex-row md:justify-between mx-4">
+        {post ? (
+          <Avatar user={post.user} />
+        ) : (
+          <div className="h-4 w-1/2 bg-gray-300 rounded" />
+        )}
+        <div className="flex gap-2 items-center mt-2 justify-between">
+          <div className="flex gap-2">
+            <Button variation="outline">
+              <HeartIcon className="h-5 w-5" />
+            </Button>
+            <Button variation="outline">
+              <PlusIcon className="h-5 w-5" />
+            </Button>
+          </div>
           <Button variation="outline">Download</Button>
         </div>
       </div>
-      <img
-        src={post.url}
-        alt={post.description}
-        className="max-h-[75%] mt-4 mx-auto"
-      />
-      <div className="flex justify-between mt-5">
-        <div className="flex gap-x-4 sm:gap-x-8 md:gap-x-24">
-          <span>
-            <p className="text-sm text-primary w-fit">Views</p>
-            <p className="font-semibold">{post.views}</p>
-          </span>
-          <span>
-            <p className="text-sm text-primary w-fit">Downloads</p>
-            <p className="font-semibold">--</p>
-          </span>
+      {post ? (
+        <img
+          src={post.url}
+          alt={post.description}
+          className="max-h-[70vh] mt-4 mx-auto"
+        />
+      ) : (
+        <div className="h-[400px] mt-4 w-full bg-gray-300 rounded" />
+      )}
+      <div className="flex justify-between mt-5 mx-4">
+        <div className="flex flex-col gap-x-24 md:flex-row gap-y-6">
+          {post ? (
+            <span>
+              <p className="text-sm text-primary w-fit">Views</p>
+              <p className="font-semibold">{post.views}</p>
+            </span>
+          ) : (
+            <div className="h-2 bg-gray-300 rounded" />
+          )}
+          {post ? (
+            <span>
+              <p className="text-sm text-primary w-fit">Downloads</p>
+              <p className="font-semibold">--</p>
+            </span>
+          ) : (
+            <div className="h-2 bg-gray-300 rounded" />
+          )}
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-start gap-2 md:items-center">
           <Button
             variation="outline"
             className="inline-flex gap-2 items-center"
@@ -66,14 +84,22 @@ const PostModal = ({ post }: PostModalProps) => {
           </Button>
         </div>
       </div>
-      <div className="flex mt-4">
+      <div className="flex flex-col mt-6 gap-6 mb-4 mx-4 md:flex-row">
         <div className="w-full">
-          <span className="inline-flex items-center text-primary gap-2">
-            <CalendarIcon className="h-4 w-4" />
-            <TimeAgo date={post.created_at} />
-          </span>
+          {post ? (
+            <span className="inline-flex items-center text-primary gap-2">
+              <CalendarIcon className="h-4 w-4" />
+              <TimeAgo date={post.created_at} />
+            </span>
+          ) : (
+            <div className="h-4 w-1/2 bg-gray-300 rounded" />
+          )}
         </div>
-        <div className="w-full text-sm">{post.description}</div>
+        {post ? (
+          <div className="w-full text-sm">{post.description}</div>
+        ) : (
+          <div className="h-4 w-1/2 bg-gray-300 rounded" />
+        )}
       </div>
     </>
   )

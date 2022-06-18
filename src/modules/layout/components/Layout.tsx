@@ -3,13 +3,13 @@ import React from 'react'
 import Header from './Header'
 
 type LayoutProps = {
-  title: string
+  title?: string
   description?: string
   children: React.ReactNode
 }
 
 const Layout: React.FC<LayoutProps> = ({
-  title,
+  title = 'HD photos | Onsplash',
   description = 'Onsplash is a clone of Unsplash, so all credit goes to them.',
   children
 }) => {

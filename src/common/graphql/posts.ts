@@ -15,3 +15,19 @@ export const ALL_POSTS_QUERY = gql`
     }
   }
 `
+
+export const GET_POST = gql`
+  query ($id: uuid!) {
+    posts(where: { id: { _eq: $id } }) {
+      created_at
+      description
+      id
+      url
+      user {
+        displayName
+        avatarUrl
+      }
+      views
+    }
+  }
+`

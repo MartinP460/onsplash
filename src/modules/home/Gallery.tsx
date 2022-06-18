@@ -1,6 +1,8 @@
 import { Post } from '../../common/types/index'
 import { splitArrayToThreeSubArrays } from '../../common/utils/helpers'
 import { useState } from 'react'
+import { useWindowSize } from 'rooks'
+import { useRouter } from 'next/router'
 import Thumbnail from '../../common/components/Thumbnail'
 import Modal from '../../common/components/Modal'
 import PostModal from '../../common/components/PostModal'
@@ -10,12 +12,20 @@ interface HeroProps {
 }
 
 const Gallery = ({ posts }: HeroProps) => {
+  const router = useRouter()
+  const { innerWidth } = useWindowSize()
   const [isOpen, setIsOpen] = useState(false)
   const [activePost, setActivePost] = useState<Post | null>(null)
 
   const postsArray = posts ? splitArrayToThreeSubArrays(posts) : null
 
-  const handleModalOpen = (post: Post) => {
+  const handleImageClick = (post: Post) => {
+    if (!innerWidth) return
+
+    if (innerWidth < 768) {
+      return router.push(`/photo/${post.id}`)
+    }
+
     setActivePost(post)
     setIsOpen(true)
   }
@@ -29,7 +39,7 @@ const Gallery = ({ posts }: HeroProps) => {
               <Thumbnail
                 key={post.id}
                 post={post}
-                onImageClick={() => handleModalOpen(post)}
+                onImageClick={() => handleImageClick(post)}
               />
             ))}
           </div>
