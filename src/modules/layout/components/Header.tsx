@@ -23,12 +23,14 @@ const Header = () => {
           </Link>
         </div>
         <Searchbar />
-        <nav className="hidden md:block mx-6">
-          <ul className="flex whitespace-nowrap gap-8 items-center">
+        <nav className="mx-2 md:mx-6">
+          <ul className="flex whitespace-nowrap md:gap-8 items-center">
             {isAuthenticated ? (
               <>
                 <li>
-                  <Button variation="outline">Submit a photo</Button>
+                  <Button variation="outline" className="hidden md:block">
+                    Submit a photo
+                  </Button>
                 </li>
                 <li>
                   <ProfileDropdown user={user} />
@@ -36,11 +38,11 @@ const Header = () => {
               </>
             ) : (
               <>
-                <li>
+                <li className="hidden md:block">
                   <NavLink href="/explore">Explore</NavLink>
                 </li>
                 <div className="w-[1px] h-8 bg-text"></div>
-                <div className="flex items-center gap-3">
+                <div className="items-center gap-3 hidden md:flex">
                   <li>
                     <NavLink href="/login">Log in</NavLink>
                   </li>
