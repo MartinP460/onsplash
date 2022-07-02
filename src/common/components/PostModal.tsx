@@ -2,8 +2,6 @@ import { Post } from '../types/index'
 import {
   HeartIcon,
   PlusIcon,
-  DotsHorizontalIcon,
-  ShareIcon,
   InformationCircleIcon,
   CalendarIcon
 } from '@heroicons/react/solid'
@@ -36,15 +34,17 @@ const PostModal = ({ post }: PostModalProps) => {
           <Button variation="outline">Download</Button>
         </div>
       </div>
-      {post ? (
-        <img
-          src={post.url}
-          alt={post.description}
-          className="max-h-[70vh] mt-4 mx-auto"
-        />
-      ) : (
-        <div className="h-[400px] mt-4 w-full bg-gray-300 rounded" />
-      )}
+      <div className="mt-4">
+        {post ? (
+          <img
+            src={post.image.url}
+            alt={post.description}
+            className="max-h-[80vh] md:max-h-[70vh] mx-auto"
+          />
+        ) : (
+          <div className="h-[400px] mt-4 w-full bg-gray-300 rounded" />
+        )}
+      </div>
       <div className="flex justify-between mt-5 mx-4">
         <div className="flex flex-col gap-x-24 md:flex-row gap-y-6">
           {post ? (
@@ -69,18 +69,8 @@ const PostModal = ({ post }: PostModalProps) => {
             variation="outline"
             className="inline-flex gap-2 items-center"
           >
-            <ShareIcon className="h-5 w-5" />
-            <p className="hidden md:inline">Share</p>
-          </Button>
-          <Button
-            variation="outline"
-            className="inline-flex gap-2 items-center"
-          >
             <InformationCircleIcon className="h-5 w-5" />
             <p className="hidden md:inline">Info</p>
-          </Button>
-          <Button variation="outline">
-            <DotsHorizontalIcon className="h-5 w-5" />
           </Button>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { Popover } from '@headlessui/react'
 import { User } from '@nhost/core'
 import Link from 'next/link'
 import AvatarIcon from '../../../common/components/AvatarIcon'
-import Button from '../../../common/components/Button'
+import SubmitButton from '../../submit/components/SubmitButton'
 
 interface ProfileIconProps {
   user: User
@@ -29,9 +29,7 @@ const ProfileDropdown = ({ user }: ProfileIconProps) => {
             </Link>
           </li>
           <li className="flex justify-center px-3 py-2 md:hidden">
-            <Button variation="outline" className="py-1.5 w-full">
-              Submit a photo
-            </Button>
+            <SubmitButton />
           </li>
           <div className="bg-text h-0.5 my-1" />
           <li className="py-2 px-3 my-1 hover:bg-gray-100 transition-fast">

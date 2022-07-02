@@ -9,12 +9,13 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string
   label: string
   altLabel?: ReactNode
-  ref: string
   error?: string | undefined
+  className?: string
+  ref: string
 }
 
 const InputElement: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
-  { name, label, altLabel, error, ...rest },
+  { name, label, altLabel, error = '', className = '', ...rest },
   ref
 ) => {
   return (
@@ -28,7 +29,7 @@ const InputElement: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
           {...rest}
           name={name}
           ref={ref}
-          className={`block w-full border border-black mt-2 p-3 rounded ${
+          className={`block w-full border border-black mt-2 rounded ${className} ${
             error && 'border-red-500'
           }`}
         />

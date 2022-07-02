@@ -1,5 +1,6 @@
 import { Post } from '../types/index'
 import { HeartIcon, PlusIcon } from '@heroicons/react/solid'
+import Image from 'next/image'
 import Avatar from './Avatar'
 import Button from './Button'
 
@@ -14,13 +15,15 @@ const Thumbnail = ({ post, onImageClick }: ThumbnailProps) => {
       <div className="mx-2 mb-2 md:hidden">
         <Avatar user={post.user} />
       </div>
-      <div>
-        <img
-          key={post.id}
-          src={post.url}
+      <div className="relative">
+        <Image
+          src={post.image.url}
+          width={post.image.width}
+          height={post.image.height}
           alt={post.description}
           onClick={onImageClick}
-          className="object-contain hover:cursor-zoom-in"
+          objectFit="contain"
+          className="hover:cursor-zoom-in"
         />
       </div>
       <div className="mx-2 mt-2 flex justify-between md:hidden">

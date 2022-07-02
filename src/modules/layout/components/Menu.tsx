@@ -50,7 +50,10 @@ const Menu = () => {
         {!innerWidth || innerWidth < 768 ? (
           <ul>
             {menuItems.map((detail, i) => (
-              <details className="py-2 group hover:cursor-pointer">
+              <details
+                key={detail.title}
+                className="py-2 group hover:cursor-pointer"
+              >
                 <summary className="list-none flex justify-between">
                   <div className="flex ml-4">
                     {getItemIcon(detail.title)}
@@ -58,27 +61,21 @@ const Menu = () => {
                   </div>
                   <ChevronDownIcon className="h-6 text-gray-300 group-open:rotate-180 transition-transform" />
                 </summary>
-                <ul className="pl-9">
-                  {detail.items.map((item, j) => (
-                    <>
-                      <li
-                        key={typeof item === 'string' ? item : item.label}
-                        className="my-4"
-                      >
-                        <Link
-                          href={typeof item === 'string' ? item : item.href}
-                        >
-                          <a className="capitalize text-primary hover:text-primary-hover">
-                            {typeof item === 'string' ? item : item.label}
-                          </a>
-                        </Link>
-                      </li>
-                      <li className="my-4">
-                        {i == 1 && j == 1 && <Socials />}
-                      </li>
-                    </>
-                  ))}
-                </ul>
+                {detail.items.map((item, j) => (
+                  <ul
+                    key={typeof item === 'string' ? item : item.label}
+                    className="pl-9"
+                  >
+                    <li className="my-4">
+                      <Link href={typeof item === 'string' ? item : item.href}>
+                        <a className="capitalize text-primary hover:text-primary-hover">
+                          {typeof item === 'string' ? item : item.label}
+                        </a>
+                      </Link>
+                    </li>
+                    <li className="my-4">{i == 1 && j == 1 && <Socials />}</li>
+                  </ul>
+                ))}
               </details>
             ))}
           </ul>
@@ -90,27 +87,21 @@ const Menu = () => {
                   {getItemIcon(detail.title)}
                   <p className="font-bold ml-4">{detail.title}</p>
                 </div>
-                <ul className="pl-9">
-                  {detail.items.map((item, j) => (
-                    <>
-                      <li
-                        key={typeof item === 'string' ? item : item.label}
-                        className="my-4"
-                      >
-                        <Link
-                          href={typeof item === 'string' ? item : item.href}
-                        >
-                          <a className="capitalize text-primary hover:text-primary-hover whitespace-nowrap">
-                            {typeof item === 'string' ? item : item.label}
-                          </a>
-                        </Link>
-                      </li>
-                      <li className="my-4">
-                        {i == 1 && j == 1 && <Socials />}
-                      </li>
-                    </>
-                  ))}
-                </ul>
+                {detail.items.map((item, j) => (
+                  <ul
+                    key={typeof item === 'string' ? item : item.label}
+                    className="pl-9"
+                  >
+                    <li className="my-4">
+                      <Link href={typeof item === 'string' ? item : item.href}>
+                        <a className="capitalize text-primary hover:text-primary-hover whitespace-nowrap">
+                          {typeof item === 'string' ? item : item.label}
+                        </a>
+                      </Link>
+                    </li>
+                    <li className="my-4">{i == 1 && j == 1 && <Socials />}</li>
+                  </ul>
+                ))}
               </div>
             ))}
           </div>

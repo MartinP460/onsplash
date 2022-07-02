@@ -14,7 +14,7 @@ const Hero = ({ post }: HeroProps) => {
         <p>Powered by creators and one developer.</p>
       </div>
       <Image
-        src={post.url}
+        src={post.image.url}
         layout="fill"
         objectFit="cover"
         priority

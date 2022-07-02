@@ -52,12 +52,14 @@ const Login = () => {
           <Input
             label="Email"
             error={errors.email && 'This field is required.'}
+            className="p-3"
             {...register('email', { required: true })}
           />
           <Input
             label="Password"
             altLabel={<Link href="/signup">Forgot your password?</Link>}
             type="password"
+            className="p-3"
             error={errors.password && 'This field is required.'}
             {...register('password', { required: true })}
           />
