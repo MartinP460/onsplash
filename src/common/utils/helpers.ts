@@ -1,7 +1,20 @@
-export const splitArrayToThreeSubArrays = (arr: any[]) => {
-  const itemsPerSubArray = Math.ceil(arr.length / 3)
+import { Post } from '../types'
 
-  return new Array(3)
-    .fill('')
-    .map((_, i) => arr.slice(i * itemsPerSubArray, (i + 1) * itemsPerSubArray))
+export const splitArrayToThreeSubArrays = (arr: Post[]) => {
+  // initiate sub arrays corresponding to each column
+  let result: Post[][] = [[], [], []]
+  // initiate array of heights for each column
+  let heights = [0, 0, 0]
+
+  arr.forEach((_, i) => {
+    // find the column with the lowest height
+    const lowestSubArrayIndex = heights.indexOf(Math.min(...heights))
+    // add the post to the column with the lowest height
+    result[lowestSubArrayIndex].push(arr[i])
+    // update the height of the column with the lowest height
+    heights[lowestSubArrayIndex] =
+      heights[lowestSubArrayIndex] + arr[i].image.height
+  })
+
+  return result
 }

@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client'
 
-export const ALL_POSTS_QUERY = gql`
-  query {
-    posts {
+export const GET_ALL_POSTS = gql`
+  query ($offset: Int!) {
+    posts(limit: 20, offset: $offset) {
       created_at
       description
       id
@@ -26,6 +26,39 @@ export const ALL_POSTS_QUERY = gql`
 export const GET_POST = gql`
   query ($id: uuid!) {
     posts(where: { id: { _eq: $id } }) {
+      created_at
+      description
+      id
+      url
+      image {
+        url
+        width
+        height
+      }
+      user {
+        displayName
+        avatarUrl
+      }
+      views
+      location
+      tags
+    }
+  }
+`
+
+export const GET_POSTS_BY_QUERY = gql`
+  query ($query: String, $offset: Int!) {
+    posts(
+      limit: 20
+      offset: $offset
+      where: {
+        _or: [
+          { description: { _ilike: $query } }
+          { location: { _ilike: $query } }
+          { tags: { _cast: { String: { _ilike: $query } } } }
+        ]
+      }
+    ) {
       created_at
       description
       id

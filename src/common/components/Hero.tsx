@@ -1,4 +1,4 @@
-import { Post } from '../../common/types/index'
+import { Post } from '../types/index'
 import Image from 'next/image'
 
 interface HeroProps {

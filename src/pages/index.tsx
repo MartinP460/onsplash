@@ -1,20 +1,23 @@
 import { GetStaticProps, NextPage } from 'next'
 import { ApolloClient, InMemoryCache } from '@apollo/client'
-import { ALL_POSTS_QUERY } from '../common/graphql/posts'
+import { GET_ALL_POSTS } from '../common/graphql/posts'
 import { Post } from '../common/types/index'
 import Layout from '../modules/layout/components/Layout'
-import Hero from '../modules/home/Hero'
-import Gallery from '../modules/home/Gallery'
+import Hero from '../common/components/Hero'
+import Gallery from '../common/components/Gallery'
 
 interface HomeProps {
-  posts: Post[]
+  initialPosts: Post[]
 }
 
-const Index: NextPage<HomeProps> = ({ posts }) => {
+const Index: NextPage<HomeProps> = ({ initialPosts }) => {
   return (
     <Layout>
-      <Hero post={posts[0]} />
-      <Gallery posts={posts.slice(1)} />
+      <Hero post={initialPosts[0]} />
+      <Gallery
+        initialPosts={initialPosts.slice(1)}
+        scrollQuery={{ query: GET_ALL_POSTS }}
+      />
     </Layout>
   )
 }
@@ -28,12 +31,13 @@ export const getStaticProps: GetStaticProps = async () => {
   })
 
   const { data } = await client.query({
-    query: ALL_POSTS_QUERY
+    query: GET_ALL_POSTS,
+    variables: { offset: 0 }
   })
 
   return {
     props: {
-      posts: data.posts
+      initialPosts: data.posts
     }
   }
 }
