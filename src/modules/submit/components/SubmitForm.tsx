@@ -5,6 +5,7 @@ import { CREATE_POST } from '../../../common/graphql/posts'
 import { isValidUnsplashHttpUrl, isValidImage } from '../utils/helper'
 import { useUserContext } from '../../../common/utils/UserProvider'
 import { ExclamationCircleIcon } from '@heroicons/react/solid'
+import { useRouter } from 'next/router'
 import useImageDimensions from '../hooks/useImageDimensions'
 import Image from 'next/image'
 import Input from '../../../common/components/Input'
@@ -38,13 +39,14 @@ const SubmitForm = () => {
 
   const [tags, setTags] = useState<string[]>([])
   const dimensions = useImageDimensions(watchUrl)
+  const router = useRouter()
 
   const [submitPost, { loading, error }] = useMutation(CREATE_POST)
 
-  const onSubmit: SubmitHandler<FormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
     if (dimensions.width && dimensions.height) {
       try {
-        submitPost({
+        await submitPost({
           variables: {
             url: data.url,
             description: data.description,
@@ -55,6 +57,9 @@ const SubmitForm = () => {
             userId: user.id
           }
         })
+        // close modal to indicate success
+        const { submit, ...rest } = router.query
+        router.push({ query: { ...rest } })
         // display success toast
       } catch (error) {
         // display error toast
@@ -75,7 +80,7 @@ const SubmitForm = () => {
             href="https://www.unsplash.com"
             target="_blank"
           >
-            Unplash
+            Unsplash
           </a>
           &nbsp; can be uploaded. Therefore, the domain name has to be
           'images.unsplash.com'. Get random image&nbsp;

@@ -12,7 +12,7 @@ const Searchbar = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    router.push(`/search?q=${query}`)
+    router.push(`/s?query=${query}`)
   }
 
   return (

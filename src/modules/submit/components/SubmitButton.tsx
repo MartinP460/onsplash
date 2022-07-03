@@ -1,14 +1,20 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 interface SubmitButtonProps {
   className?: string
 }
 
 const SubmitButton = ({ className }: SubmitButtonProps) => {
+  const router = useRouter()
+
   return (
     <Link
       href={{
-        query: 'submit'
+        query: {
+          ...router.query,
+          submit: ''
+        }
       }}
       shallow
     >
