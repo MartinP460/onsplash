@@ -20,6 +20,7 @@ export const GET_ALL_POSTS = gql`
       views
       location
       tags
+      likes
     }
   }
 `
@@ -44,6 +45,7 @@ export const GET_POST = gql`
       views
       location
       tags
+      likes
     }
   }
 `
@@ -78,6 +80,7 @@ export const GET_POSTS_BY_QUERY = gql`
       views
       location
       tags
+      likes
     }
   }
 `
@@ -106,13 +109,18 @@ export const GET_POSTS_BY_USER = gql`
       views
       location
       tags
+      likes
     }
   }
 `
 
 export const GET_LIKED_POSTS = gql`
-  query ($userId: uuid!) {
-    posts(where: { likes: { _contains: [$userId] } }) {
+  query ($userId: uuid!, $offset: Int!) {
+    posts(
+      where: { likes: { _contains: [$userId] } }
+      limit: 20
+      offset: $offset
+    ) {
       created_at
       description
       id
@@ -130,6 +138,7 @@ export const GET_LIKED_POSTS = gql`
       views
       location
       tags
+      likes
     }
   }
 `
@@ -152,6 +161,28 @@ export const CREATE_POST = gql`
         image: { data: { height: $height, url: $url, width: $width } }
         user_id: $userId
       }
+    ) {
+      id
+    }
+  }
+`
+
+export const LIKE_POST = gql`
+  mutation ($postId: uuid!, $userId: uuid!) {
+    update_posts_by_pk(
+      pk_columns: { id: $postId }
+      _append: { likes: [$userId] }
+    ) {
+      id
+    }
+  }
+`
+
+export const UNLIKE_POST = gql`
+  mutation ($postId: uuid!, $userId: String!) {
+    update_posts_by_pk(
+      pk_columns: { id: $postId }
+      _delete_key: { likes: $userId }
     ) {
       id
     }

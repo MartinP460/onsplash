@@ -14,4 +14,5 @@ export interface Post {
   }
   tags?: string[]
   location?: string
+  likes: string[]
 }

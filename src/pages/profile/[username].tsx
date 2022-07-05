@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { useQuery } from '@apollo/client'
 import { GET_USER } from '../../common/graphql/user'
-import { GET_POSTS_BY_USER } from '../../common/graphql/posts'
+import { GET_POSTS_BY_USER, GET_LIKED_POSTS } from '../../common/graphql/posts'
 import { Tab } from '@headlessui/react'
 import Layout from '../../modules/layout/components/Layout'
 import AvatarIcon from '../../common/components/AvatarIcon'
@@ -75,7 +75,14 @@ const Profile: NextPage<ProfileProps> = ({ username }) => {
                 }}
               />
             </Tab.Panel>
-            <Tab.Panel>This is the like section.</Tab.Panel>
+            <Tab.Panel>
+              <Gallery
+                scrollQuery={{
+                  query: GET_LIKED_POSTS,
+                  variables: { userId: user.id }
+                }}
+              />
+            </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
       ) : (

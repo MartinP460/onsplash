@@ -34,6 +34,7 @@ const Gallery = ({ scrollQuery, initialPosts }: HeroProps) => {
       return router.push(`/photo/${post.id}`)
     }
 
+    router.push({}, `/photo/${post.id}`, { scroll: false })
     setActivePost(post)
   }
 
@@ -67,7 +68,13 @@ const Gallery = ({ scrollQuery, initialPosts }: HeroProps) => {
           <p className="text-xl">Hmmmm... We couldn't find any pictures.</p>
         </div>
       )}
-      <Modal isOpen={Boolean(activePost)} onClose={() => setActivePost(null)}>
+      <Modal
+        isOpen={Boolean(activePost)}
+        onClose={() => {
+          setActivePost(null)
+          router.push({}, '', { scroll: false })
+        }}
+      >
         {activePost && <PostModal post={activePost} />}
       </Modal>
     </>

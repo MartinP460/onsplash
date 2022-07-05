@@ -3,6 +3,7 @@ import { gql } from '@apollo/client'
 export const GET_USER = gql`
   query ($displayName: String) {
     users(where: { displayName: { _eq: $displayName } }) {
+      id
       displayName
       metadata
       avatarUrl
