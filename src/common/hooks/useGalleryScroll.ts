@@ -31,11 +31,8 @@ const useGalleryScroll = (
   }, [])
 
   useEffect(() => {
-    if (data && initialPosts) {
-      return setPosts([...posts, ...data.posts])
-    }
     if (data) {
-      return setPosts([...data.posts])
+      setPosts([...posts, ...data.posts])
     }
   }, [data])
 

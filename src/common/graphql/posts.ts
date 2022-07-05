@@ -15,6 +15,7 @@ export const GET_ALL_POSTS = gql`
       user {
         displayName
         avatarUrl
+        metadata
       }
       views
       location
@@ -38,6 +39,7 @@ export const GET_POST = gql`
       user {
         displayName
         avatarUrl
+        metadata
       }
       views
       location
@@ -71,6 +73,59 @@ export const GET_POSTS_BY_QUERY = gql`
       user {
         displayName
         avatarUrl
+        metadata
+      }
+      views
+      location
+      tags
+    }
+  }
+`
+
+export const GET_POSTS_BY_USER = gql`
+  query ($displayName: String, $offset: Int!) {
+    posts(
+      where: { user: { displayName: { _eq: $displayName } } }
+      limit: 20
+      offset: $offset
+    ) {
+      created_at
+      description
+      id
+      url
+      image {
+        url
+        width
+        height
+      }
+      user {
+        displayName
+        avatarUrl
+        metadata
+      }
+      views
+      location
+      tags
+    }
+  }
+`
+
+export const GET_LIKED_POSTS = gql`
+  query ($userId: uuid!) {
+    posts(where: { likes: { _contains: [$userId] } }) {
+      created_at
+      description
+      id
+      url
+      image {
+        url
+        width
+        height
+      }
+      user {
+        displayName
+        avatarUrl
+        metadata
       }
       views
       location

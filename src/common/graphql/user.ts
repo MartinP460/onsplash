@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client'
 
+export const GET_USER = gql`
+  query ($displayName: String) {
+    users(where: { displayName: { _eq: $displayName } }) {
+      displayName
+      metadata
+      avatarUrl
+    }
+  }
+`
+
 export const UPDATE_USER_MUTATION = gql`
   mutation (
     $id: uuid!

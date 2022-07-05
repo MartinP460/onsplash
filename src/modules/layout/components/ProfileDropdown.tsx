@@ -12,7 +12,7 @@ const ProfileDropdown = ({ user }: ProfileIconProps) => {
   return (
     <Popover className="relative">
       <Popover.Button className="outline-none flex items-center">
-        <AvatarIcon url={user.avatarUrl} />
+        <AvatarIcon url={user.avatarUrl} className="w-8 h-8" />
       </Popover.Button>
       <Popover.Panel className="absolute z-10 top-12 border right-0 border-text rounded bg-white py-1 shadow-lg w-[250px] md:w-[178px]">
         <ul>

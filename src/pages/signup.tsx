@@ -1,11 +1,13 @@
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignUpEmailPassword } from '@nhost/nextjs'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import Link from 'next/link'
+import Input from '../common/components/Input'
 
 type FormValues = {
   firstName: string
   lastName: string
+  username: string
   email: string
   password: string
 }
@@ -18,19 +20,13 @@ function Signup() {
   } = useForm<FormValues>()
   const router = useRouter()
 
-  const {
-    signUpEmailPassword,
-    isLoading,
-    isSuccess,
-    needsEmailVerification,
-    isError,
-    error
-  } = useSignUpEmailPassword()
+  const { signUpEmailPassword, isLoading, isSuccess, isError, error } =
+    useSignUpEmailPassword()
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    const { firstName, lastName, email, password } = data
+    const { firstName, lastName, username, email, password } = data
     await signUpEmailPassword(email, password, {
-      displayName: `${firstName} ${lastName}`.trim(),
+      displayName: username,
       metadata: {
         firstName,
         lastName
@@ -47,54 +43,61 @@ function Signup() {
   return (
     <div className="w-1/2 mx-auto mt-4">
       <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col">
-        <input
-          placeholder="First name"
-          disabled={disableForm}
-          className="p-2 border-2 border-gray-400 rounded"
+        <Input
+          label="First name"
+          className="p-2"
+          error={
+            errors.firstName &&
+            (errors.firstName?.type === 'minLength'
+              ? 'The minimum length is 2.'
+              : 'This field is required.')
+          }
           {...register('firstName', { required: true, minLength: 2 })}
         />
-        {errors.firstName &&
-          (errors.firstName?.type === 'minLength' ? (
-            <span>The minimum length is 2.</span>
-          ) : (
-            <span>This field is required.</span>
-          ))}
-        <input
-          placeholder="Last name"
-          disabled={disableForm}
-          className="p-2 border-2 border-gray-400 rounded"
+        <Input
+          label="Last name"
+          className="p-2"
+          error={
+            errors.lastName &&
+            (errors.lastName?.type === 'minLength'
+              ? 'The minimum length is 2.'
+              : 'This field is required.')
+          }
           {...register('lastName', { required: true, minLength: 2 })}
         />
-        {errors.lastName &&
-          (errors.lastName?.type === 'minLength' ? (
-            <span>The minimum length is 2.</span>
-          ) : (
-            <span>This field is required.</span>
-          ))}
-        <input
-          placeholder="Email"
-          disabled={disableForm}
-          className="p-2 border-2 border-gray-400 rounded"
+        <Input
+          label="Username"
+          className="p-2"
+          error={
+            errors.username &&
+            (errors.username?.type === 'minLength'
+              ? 'The minimum length is 2.'
+              : 'This field is required.')
+          }
+          {...register('username', { required: true, minLength: 2 })}
+        />
+        <Input
+          label="Email"
+          className="p-2"
+          error={
+            errors.email &&
+            (errors.email?.type === 'pattern'
+              ? 'This field has to be an email.'
+              : 'This field is required.')
+          }
           {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
         />
-        {errors.email &&
-          (errors.email?.type === 'pattern' ? (
-            <span>This field has to be an email.</span>
-          ) : (
-            <span>This field is required.</span>
-          ))}
-        <input
-          placeholder="Password"
-          disabled={disableForm}
-          className="p-2 border-2 border-gray-400 rounded"
+        <Input
+          label="Password"
+          className="p-2"
+          error={
+            errors.password &&
+            (errors.password?.type === 'minLength'
+              ? 'The minimum length is 4.'
+              : 'This field is required.')
+          }
           {...register('password', { required: true, minLength: 4 })}
         />
-        {errors.password &&
-          (errors.password?.type === 'minLength' ? (
-            <span>The minimum length is 4.</span>
-          ) : (
-            <span>This field is required.</span>
-          ))}
         <button
           type="submit"
           disabled={disableForm}
