@@ -6,7 +6,6 @@ export const GET_ALL_POSTS = gql`
       created_at
       description
       id
-      url
       image {
         url
         width
@@ -31,7 +30,6 @@ export const GET_POST = gql`
       created_at
       description
       id
-      url
       image {
         url
         width
@@ -66,7 +64,6 @@ export const GET_POSTS_BY_QUERY = gql`
       created_at
       description
       id
-      url
       image {
         url
         width
@@ -95,7 +92,6 @@ export const GET_POSTS_BY_USER = gql`
       created_at
       description
       id
-      url
       image {
         url
         width
@@ -124,7 +120,6 @@ export const GET_LIKED_POSTS = gql`
       created_at
       description
       id
-      url
       image {
         url
         width
@@ -184,6 +179,14 @@ export const UNLIKE_POST = gql`
       pk_columns: { id: $postId }
       _delete_key: { likes: $userId }
     ) {
+      id
+    }
+  }
+`
+
+export const INCREMENT_VIEWS = gql`
+  mutation ($id: uuid!) {
+    update_posts_by_pk(pk_columns: { id: $id }, _inc: { views: 1 }) {
       id
     }
   }

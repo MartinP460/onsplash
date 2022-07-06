@@ -3,6 +3,7 @@ import { useUserContext } from '../utils/UserProvider'
 import { useMutation } from '@apollo/client'
 import { LIKE_POST, UNLIKE_POST } from '../graphql/posts'
 import { HeartIcon } from '@heroicons/react/solid'
+import { useRouter } from 'next/router'
 import Button from './Button'
 
 interface LikeButton {
@@ -13,6 +14,7 @@ interface LikeButton {
 
 const LikeButton = ({ postId, likes, className }: LikeButton) => {
   const user = useUserContext()
+  const router = useRouter()
   const [liked, setLiked] = useState(likes.includes(user?.id))
 
   const [likePost] = useMutation(LIKE_POST, {
@@ -24,12 +26,16 @@ const LikeButton = ({ postId, likes, className }: LikeButton) => {
 
   const handleClick = (e: SyntheticEvent) => {
     e.stopPropagation()
-    if (liked) {
-      unlikePost()
-      setLiked(false)
+    if (user) {
+      if (liked) {
+        unlikePost()
+        setLiked(false)
+      } else {
+        likePost()
+        setLiked(true)
+      }
     } else {
-      likePost()
-      setLiked(true)
+      router.push('/login')
     }
   }
 
