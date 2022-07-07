@@ -5,6 +5,8 @@ import { useWindowSize } from 'rooks'
 import { useRouter } from 'next/router'
 import { DocumentNode } from 'graphql'
 import { QuestionMarkCircleIcon } from '@heroicons/react/solid'
+import { useMutation } from '@apollo/client'
+import { INCREMENT_VIEWS } from '../graphql/posts'
 import useGalleryScroll from '../hooks/useGalleryScroll'
 import Thumbnail from './Thumbnail'
 import Modal from './Modal'
@@ -24,11 +26,14 @@ interface HeroProps {
 const Gallery = ({ scrollQuery, initialPosts }: HeroProps) => {
   const router = useRouter()
   const [activePost, setActivePost] = useState<Post | null>(null)
+  const [incrementViews] = useMutation(INCREMENT_VIEWS)
   const { posts, handleRefresh } = useGalleryScroll(scrollQuery, initialPosts)
   const { innerWidth } = useWindowSize()
 
   const handleImageClick = (post: Post) => {
     if (!innerWidth) return
+
+    incrementViews({ variables: { id: post.id } })
 
     if (innerWidth < 768) {
       return router.push(`/photo/${post.id}`)
@@ -65,7 +70,7 @@ const Gallery = ({ scrollQuery, initialPosts }: HeroProps) => {
       ) : (
         <div className="flex flex-col justify-center items-center gap-4 mt-24">
           <QuestionMarkCircleIcon className="w-8 text-primary" />
-          <p className="text-xl">Hmmmm... We couldn't find any pictures.</p>
+          <p className="text-xl">Hmmmm... We couldn't find any photos.</p>
         </div>
       )}
       <Modal

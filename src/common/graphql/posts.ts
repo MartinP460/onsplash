@@ -20,6 +20,7 @@ export const GET_ALL_POSTS = gql`
       location
       tags
       likes
+      downloads
     }
   }
 `
@@ -44,6 +45,7 @@ export const GET_POST = gql`
       location
       tags
       likes
+      downloads
     }
   }
 `
@@ -78,6 +80,7 @@ export const GET_POSTS_BY_QUERY = gql`
       location
       tags
       likes
+      downloads
     }
   }
 `
@@ -106,6 +109,7 @@ export const GET_POSTS_BY_USER = gql`
       location
       tags
       likes
+      downloads
     }
   }
 `
@@ -134,6 +138,7 @@ export const GET_LIKED_POSTS = gql`
       location
       tags
       likes
+      downloads
     }
   }
 `
@@ -187,6 +192,14 @@ export const UNLIKE_POST = gql`
 export const INCREMENT_VIEWS = gql`
   mutation ($id: uuid!) {
     update_posts_by_pk(pk_columns: { id: $id }, _inc: { views: 1 }) {
+      id
+    }
+  }
+`
+
+export const INCREMENT_DOWNLOADS = gql`
+  mutation ($id: uuid!) {
+    update_posts_by_pk(pk_columns: { id: $id }, _inc: { downloads: 1 }) {
       id
     }
   }

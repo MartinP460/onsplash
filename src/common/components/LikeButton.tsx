@@ -42,8 +42,8 @@ const LikeButton = ({ postId, likes, className }: LikeButton) => {
   return (
     <Button
       variation="outline"
-      className={`hover:bg-white hover:cursor-pointer border-0 ${
-        liked ? 'bg-red-500 hover:bg-red-600' : 'bg-gray-200 hover:bg-white'
+      className={`hover:bg-white hover:cursor-pointer ${
+        liked ? '!bg-red-500 !hover:bg-red-600' : 'bg-gray-200 hover:bg-white'
       } ${className}`}
       onClick={(e) => handleClick(e)}
     >

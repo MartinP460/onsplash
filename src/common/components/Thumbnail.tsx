@@ -1,11 +1,9 @@
 import { useState } from 'react'
 import { Post } from '../types/index'
-import { HeartIcon, DownloadIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
 import Avatar from './Avatar'
 import LikeButton from './LikeButton'
 import DownloadButton from './DownloadButton'
-import Button from './Button'
 
 interface ThumbnailProps {
   post: Post
@@ -42,19 +40,25 @@ const Thumbnail = ({ post, onImageClick }: ThumbnailProps) => {
           <LikeButton
             postId={post.id}
             likes={post.likes}
-            className="self-end"
+            className="self-end border-0"
           />
           <div className="flex justify-between">
             <Avatar user={post.user} textColor="white" />
-            <DownloadButton url={post.image.url} />
+            <DownloadButton postId={post.id} url={post.image.url} />
           </div>
         </div>
       </a>
       <div className="mx-2 mt-2 flex justify-between md:hidden">
-        <Button variation="outline">
-          <HeartIcon className="h-5 w-5" />
-        </Button>
-        <Button variation="outline">Download</Button>
+        <LikeButton
+          postId={post.id}
+          likes={post.likes}
+          className="bg-white border-2"
+        />
+        <DownloadButton
+          postId={post.id}
+          url={post.image.url}
+          className="bg-white"
+        />
       </div>
     </div>
   )

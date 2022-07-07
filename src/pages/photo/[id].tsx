@@ -1,8 +1,10 @@
 import { GetServerSideProps, NextPage } from 'next'
-import { GET_POST } from '../../common/graphql/posts'
 import { useQuery } from '@apollo/client'
+import { useMutation } from '@apollo/client'
+import { GET_POST, INCREMENT_VIEWS } from '../../common/graphql/posts'
 import Layout from '../../modules/layout/components/Layout'
 import PostModal from '../../common/components/PostModal'
+import { useEffect } from 'react'
 
 interface PhotoProps {
   id: string
@@ -12,12 +14,15 @@ const Photo: NextPage<PhotoProps> = ({ id }) => {
   const { data, error } = useQuery(GET_POST, {
     variables: { id }
   })
+  const [incrementViews] = useMutation(INCREMENT_VIEWS)
 
-  return (
-    <Layout>
-      <PostModal post={data?.posts[0]} />
-    </Layout>
-  )
+  useEffect(() => {
+    if (data) {
+      incrementViews({ variables: { id } })
+    }
+  }, [data])
+
+  return <Layout>{data && <PostModal post={data.posts[0]} />}</Layout>
 }
 
 export default Photo
