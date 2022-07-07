@@ -1,3 +1,4 @@
+import { NextPage } from 'next'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignInEmailPassword } from '@nhost/nextjs'
 import { useRouter } from 'next/router'
@@ -11,7 +12,7 @@ type FormValues = {
   password: string
 }
 
-const Login = () => {
+const Login: NextPage = () => {
   const {
     register,
     handleSubmit,

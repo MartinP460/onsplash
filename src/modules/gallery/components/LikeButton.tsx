@@ -1,10 +1,10 @@
 import { SyntheticEvent, useState } from 'react'
-import { useUserContext } from '../utils/UserProvider'
+import { useUserContext } from '../../../common/utils/UserProvider'
 import { useMutation } from '@apollo/client'
-import { LIKE_POST, UNLIKE_POST } from '../graphql/posts'
+import { LIKE_POST, UNLIKE_POST } from '../../../common/graphql/posts'
 import { HeartIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
-import Button from './Button'
+import Button from '../../../common/components/Button'
 
 interface LikeButton {
   postId: string

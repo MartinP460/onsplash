@@ -4,7 +4,7 @@ import { GET_ALL_POSTS } from '../common/graphql/posts'
 import { Post } from '../common/types/index'
 import Layout from '../modules/layout/components/Layout'
 import Hero from '../common/components/Hero'
-import Gallery from '../common/components/Gallery'
+import Gallery from '../modules/gallery/components/Gallery'
 
 interface HomeProps {
   initialPosts: Post[]

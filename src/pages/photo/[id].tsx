@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client'
 import { useMutation } from '@apollo/client'
 import { GET_POST, INCREMENT_VIEWS } from '../../common/graphql/posts'
 import Layout from '../../modules/layout/components/Layout'
-import PostModal from '../../common/components/PostModal'
+import PostModal from '../../modules/gallery/components/PostModal'
 import { useEffect } from 'react'
 
 interface PhotoProps {

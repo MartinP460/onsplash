@@ -1,8 +1,8 @@
 import { DownloadIcon } from '@heroicons/react/solid'
 import { useMutation } from '@apollo/client'
-import { INCREMENT_DOWNLOADS } from '../graphql/posts'
+import { INCREMENT_DOWNLOADS } from '../../../common/graphql/posts'
 import useDifferentOriginDownload from '../hooks/useDifferentOriginDownload'
-import Button from './Button'
+import Button from '../../../common/components/Button'
 
 interface DownloadButtonProps {
   postId: string

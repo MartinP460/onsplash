@@ -4,7 +4,7 @@ import { useUserContext } from '../../../common/utils/UserProvider'
 import Link from 'next/link'
 import Searchbar from './Searchbar'
 import Menu from './Menu'
-import NavLink from '../../../common/components/NavLink'
+import NavLink from './NavLink'
 import ProfileDropdown from './ProfileDropdown'
 import SubmitButton from '../../submit/components/SubmitButton'
 

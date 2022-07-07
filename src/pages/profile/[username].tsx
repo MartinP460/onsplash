@@ -5,7 +5,7 @@ import { GET_POSTS_BY_USER, GET_LIKED_POSTS } from '../../common/graphql/posts'
 import { Tab } from '@headlessui/react'
 import Layout from '../../modules/layout/components/Layout'
 import AvatarIcon from '../../common/components/AvatarIcon'
-import Gallery from '../../common/components/Gallery'
+import Gallery from '../../modules/gallery/components/Gallery'
 
 interface ProfileProps {
   username: string

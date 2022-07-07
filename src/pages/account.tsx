@@ -1,4 +1,4 @@
-/* eslint-disable prettier/prettier */
+import { NextPage } from 'next'
 import { useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
 import { useUserContext } from '../common/utils/UserProvider'
@@ -12,7 +12,7 @@ type FormValues = {
   email: string
 }
 
-const Account = () => {
+const Account: NextPage = () => {
   const user = useUserContext()
   const [mutateUser, { loading: updatingProfile }] =
     useMutation(UPDATE_USER_MUTATION)

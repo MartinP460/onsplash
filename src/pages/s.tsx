@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { GET_POSTS_BY_QUERY } from '../common/graphql/posts'
-import Gallery from '../common/components/Gallery'
+import Gallery from '../modules/gallery/components/Gallery'
 import Layout from '../modules/layout/components/Layout'
 
 interface SearchProps {
