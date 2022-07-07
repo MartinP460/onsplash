@@ -1,5 +1,5 @@
 import { Post } from '../../../common/types/index'
-import { CalendarIcon } from '@heroicons/react/solid'
+import { CalendarIcon, LocationMarkerIcon } from '@heroicons/react/solid'
 import TimeAgo from 'react-timeago'
 import Avatar from '../../../common/components/Avatar'
 import LikeButton from './LikeButton'
@@ -49,11 +49,17 @@ const PostModal = ({ post }: PostModalProps) => {
         </div>
       </div>
       <div className="flex flex-col mt-6 gap-6 mb-4 mx-4 md:flex-row">
-        <div className="w-full">
+        <div className="w-full flex flex-col gap-y-2">
           <span className="inline-flex items-center text-primary gap-2">
-            <CalendarIcon className="h-4 w-4" />
+            <CalendarIcon className="w-4" />
             <TimeAgo date={post.created_at} />
           </span>
+          {post.location && (
+            <span className="inline-flex items-center text-primary gap-2">
+              <LocationMarkerIcon className="w-4" />
+              <p>{post.location}</p>
+            </span>
+          )}
         </div>
         <div className="w-full text-sm">{post.description}</div>
       </div>
