@@ -1,6 +1,5 @@
-import { useAuthenticationStatus } from '@nhost/nextjs'
 import { AcademicCapIcon } from '@heroicons/react/solid'
-import { useUserContext } from '../../../common/utils/UserProvider'
+import { useUserContext } from '../../../common/context/userContext'
 import Link from 'next/link'
 import Searchbar from './Searchbar'
 import Menu from './Menu'
@@ -10,7 +9,6 @@ import SubmitButton from '../../submit/components/SubmitButton'
 
 const Header = () => {
   const user = useUserContext()
-  const { isAuthenticated } = useAuthenticationStatus()
 
   return (
     <header>
@@ -25,7 +23,7 @@ const Header = () => {
         <Searchbar />
         <nav className="mx-2 md:mx-6">
           <ul className="flex whitespace-nowrap md:gap-8 items-center">
-            {isAuthenticated ? (
+            {user ? (
               <>
                 <li>
                   <SubmitButton className="hidden md:block" />

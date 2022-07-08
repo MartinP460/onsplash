@@ -1,9 +1,10 @@
 import { NextPage } from 'next'
 import { useMutation } from '@apollo/client'
 import { useForm } from 'react-hook-form'
-import { useUserContext } from '../common/utils/UserProvider'
+import { useUserContext } from '../common/context/userContext'
 import { UPDATE_USER_MUTATION } from '../common/graphql/user'
 import { authProtected } from '../common/hoc/authProtected'
+import useToast from '../common/hooks/useToast'
 import Layout from '../modules/layout/components/Layout'
 
 type FormValues = {
@@ -16,18 +17,13 @@ const Account: NextPage = () => {
   const user = useUserContext()
   const [mutateUser, { loading: updatingProfile }] =
     useMutation(UPDATE_USER_MUTATION)
+  const toast = useToast()
 
   const {
     register,
     handleSubmit,
     formState: { errors, isDirty }
-  } = useForm<FormValues>({
-    defaultValues: {
-      firstName: user?.metadata.firstName,
-      lastName: user?.metadata.lastName,
-      email: user?.email
-    }
-  })
+  } = useForm<FormValues>()
 
   const onSubmit = async (data: FormValues) => {
     const { firstName, lastName } = data
@@ -43,9 +39,9 @@ const Account: NextPage = () => {
           }
         }
       })
-      console.log('success')
+      toast('success', 'Profile successfully updated.')
     } catch (error) {
-      console.error(error)
+      toast('error', 'There was an error updating your profile.')
     }
   }
 

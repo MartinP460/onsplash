@@ -1,7 +1,9 @@
 import { AppProps } from 'next/app'
 import { NhostNextProvider, NhostClient } from '@nhost/nextjs'
 import { NhostApolloProvider } from '@nhost/react-apollo'
-import { UserProvider } from '../common/utils/UserProvider'
+import { UserProvider } from '../common/context/userContext'
+import { ToastProvider } from '../common/context/NotificationProvider'
+import Toast from '../common/components/Toast'
 import SubmitModal from '../modules/submit/components/SubmitModal'
 import '../styles/globals.css'
 
@@ -14,8 +16,11 @@ const CustomApp = ({ Component, pageProps }: AppProps) => {
     <NhostNextProvider nhost={nhost} initial={pageProps.nhostSession}>
       <NhostApolloProvider nhost={nhost}>
         <UserProvider>
-          <Component {...pageProps} />
-          <SubmitModal />
+          <ToastProvider>
+            <Component {...pageProps} />
+            <Toast />
+            <SubmitModal />
+          </ToastProvider>
         </UserProvider>
       </NhostApolloProvider>
     </NhostNextProvider>

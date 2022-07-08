@@ -1,5 +1,5 @@
 import { SyntheticEvent, useState } from 'react'
-import { useUserContext } from '../../../common/utils/UserProvider'
+import { useUserContext } from '../../../common/context/userContext'
 import { useMutation } from '@apollo/client'
 import { LIKE_POST, UNLIKE_POST } from '../../../common/graphql/posts'
 import { HeartIcon } from '@heroicons/react/solid'
@@ -15,7 +15,7 @@ interface LikeButton {
 const LikeButton = ({ postId, likes, className }: LikeButton) => {
   const user = useUserContext()
   const router = useRouter()
-  const [liked, setLiked] = useState(likes.includes(user?.id))
+  const [liked, setLiked] = useState(user ? likes.includes(user?.id) : false)
 
   const [likePost] = useMutation(LIKE_POST, {
     variables: { postId, userId: user?.id }

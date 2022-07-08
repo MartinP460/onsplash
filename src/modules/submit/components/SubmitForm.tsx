@@ -3,9 +3,10 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useMutation } from '@apollo/client'
 import { CREATE_POST } from '../../../common/graphql/posts'
 import { isValidUnsplashHttpUrl, isValidImage } from '../utils/helper'
-import { useUserContext } from '../../../common/utils/UserProvider'
+import { useUserContext } from '../../../common/context/userContext'
 import { ExclamationCircleIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
+import useToast from '../../../common/hooks/useToast'
 import useImageDimensions from '../hooks/useImageDimensions'
 import Image from 'next/image'
 import Input from '../../../common/components/Input'
@@ -40,6 +41,7 @@ const SubmitForm = () => {
   const [tags, setTags] = useState<string[]>([])
   const dimensions = useImageDimensions(watchUrl)
   const router = useRouter()
+  const toast = useToast()
 
   const [submitPost, { loading, error }] = useMutation(CREATE_POST)
 
@@ -54,15 +56,14 @@ const SubmitForm = () => {
             tags,
             width: dimensions.width,
             height: dimensions.height,
-            userId: user.id
+            userId: user?.id
           }
         })
-        // close modal to indicate success
+        toast('success', 'Post submitted successfully.')
         const { submit, ...rest } = router.query
         router.push({ query: { ...rest } })
-        // display success toast
       } catch (error) {
-        // display error toast
+        toast('error', 'An error occurred. Please try again later.')
       }
     }
   }

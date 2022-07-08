@@ -25,11 +25,7 @@ const Login: NextPage = () => {
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     const { email, password } = data
-    try {
-      await signInEmailPassword(email, password)
-    } catch {
-      // display error toast
-    }
+    signInEmailPassword(email, password)
   }
 
   if (isSuccess) {
@@ -67,10 +63,12 @@ const Login: NextPage = () => {
           <Button variation="filled" type="submit" disabled={disableForm}>
             {isLoading ? 'Loading...' : 'Sign In'}
           </Button>
-          {isError && <p>{error?.message}.</p>}
+          {isError && (
+            <p className="font-bold text-red-400">{error?.message}.</p>
+          )}
         </form>
         <div className="flex items-center justify-center p-7 border w-full mt-8">
-          Don't have an account?&nbsp;<Link href="/sign-up">Join Onsplash</Link>
+          Don't have an account?&nbsp;<Link href="/signup">Join Onsplash</Link>
         </div>
       </div>
     </div>
