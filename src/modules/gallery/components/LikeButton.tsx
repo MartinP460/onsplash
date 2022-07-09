@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/client'
 import { LIKE_POST, UNLIKE_POST } from '../../../common/graphql/posts'
 import { HeartIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
+import useToast from '../../../common/hooks/useToast'
 import Button from '../../../common/components/Button'
 
 interface LikeButton {
@@ -15,14 +16,25 @@ interface LikeButton {
 const LikeButton = ({ postId, likes, className }: LikeButton) => {
   const user = useUserContext()
   const router = useRouter()
+  const toast = useToast()
   const [liked, setLiked] = useState(user ? likes.includes(user?.id) : false)
 
-  const [likePost] = useMutation(LIKE_POST, {
+  const [likePost, { error: likeError }] = useMutation(LIKE_POST, {
     variables: { postId, userId: user?.id }
   })
-  const [unlikePost] = useMutation(UNLIKE_POST, {
+  const [unlikePost, { error: unlikeError }] = useMutation(UNLIKE_POST, {
     variables: { postId, userId: user?.id }
   })
+
+  if (likeError) {
+    toast('error', 'There was an error liking the image.')
+    setLiked(false)
+  }
+
+  if (unlikeError) {
+    toast('error', 'There was an error removing the like from the image.')
+    setLiked(true)
+  }
 
   const handleClick = (e: SyntheticEvent) => {
     e.stopPropagation()
