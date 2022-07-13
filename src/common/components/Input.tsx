@@ -19,7 +19,7 @@ const InputElement: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   ref
 ) => {
   return (
-    <div>
+    <div className="w-full">
       <label>
         <div className="flex justify-between">
           <span>{label}</span>

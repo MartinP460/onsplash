@@ -15,18 +15,15 @@ export const UPDATE_USER_MUTATION = gql`
   mutation (
     $id: uuid!
     $displayName: String!
-    $avatarUrl: String!
+    $email: citext!
     $metadata: jsonb
   ) {
     updateUser(
       pk_columns: { id: $id }
-      _set: {
-        displayName: $displayName
-        avatarUrl: $avatarUrl
-        metadata: $metadata
-      }
+      _set: { displayName: $displayName, email: $email, metadata: $metadata }
     ) {
       id
+      email
       displayName
       metadata
     }
