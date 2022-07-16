@@ -17,15 +17,14 @@ const useUniqueUsername = () => {
     })
   }
 
-  const returnTuple: [
+  return [checkUsername, { isUnique, loading, error }] as [
     (username: string) => void,
     {
       isUnique: boolean
       loading: boolean
       error?: ApolloError
     }
-  ] = [checkUsername, { isUnique, loading, error }]
-  return returnTuple
+  ]
 }
 
 export default useUniqueUsername

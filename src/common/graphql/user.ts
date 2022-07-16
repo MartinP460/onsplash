@@ -29,3 +29,17 @@ export const UPDATE_USER_MUTATION = gql`
     }
   }
 `
+
+export const DELETE_USER = gql`
+  mutation ($id: uuid!) {
+    delete_images(where: { post: { user_id: { _eq: $id } } }) {
+      affected_rows
+    }
+    delete_posts(where: { user_id: { _eq: $id } }) {
+      affected_rows
+    }
+    deleteUser(id: $id) {
+      id
+    }
+  }
+`

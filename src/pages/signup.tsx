@@ -94,10 +94,10 @@ const Signup: NextPage = () => {
           error={
             errors.password &&
             (errors.password?.type === 'minLength'
-              ? 'The minimum length is 4.'
+              ? 'The minimum length is 8.'
               : 'This field is required.')
           }
-          {...register('password', { required: true, minLength: 4 })}
+          {...register('password', { required: true, minLength: 8 })}
         />
         <button
           type="submit"
