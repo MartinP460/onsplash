@@ -29,7 +29,7 @@ const useConfirm = (title: string, description: string, message: string) => {
     <Dialog open={Boolean(promise)} onClose={() => handleCancel}>
       <div className="fixed inset-0 bg-black/30 z-20" aria-hidden></div>
       <div className="fixed inset-0 flex justify-center items-center z-30">
-        <Dialog.Panel className="bg-white rounded p-4">
+        <Dialog.Panel className="bg-white rounded p-4 mx-2">
           <Dialog.Title className="font-bold text-lg">{title}</Dialog.Title>
           <Dialog.Description className="mt-2">
             {description}
