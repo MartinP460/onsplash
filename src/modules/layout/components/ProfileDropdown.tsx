@@ -1,5 +1,6 @@
 import { Popover } from '@headlessui/react'
 import { User } from '@nhost/core'
+import { useSignOut } from '@nhost/react'
 import Link from 'next/link'
 import AvatarIcon from '../../../common/components/AvatarIcon'
 import SubmitButton from '../../submit/components/SubmitButton'
@@ -9,6 +10,8 @@ interface ProfileIconProps {
 }
 
 const ProfileDropdown = ({ user }: ProfileIconProps) => {
+  const { signOut } = useSignOut()
+
   return (
     <Popover className="relative">
       <Popover.Button className="outline-none flex items-center">
@@ -34,8 +37,11 @@ const ProfileDropdown = ({ user }: ProfileIconProps) => {
           <div className="bg-text h-0.5 my-1" />
           <li className="py-2 px-3 my-1 hover:bg-gray-100 transition-fast">
             <Link href="/account">
-              <button className="block h-full no-underline text-gray-500">
-                <>Logout {user.metadata.username}</>
+              <button
+                className="block h-full no-underline text-gray-500 w-full text-left"
+                onClick={() => signOut()}
+              >
+                Logout {user.displayName}
               </button>
             </Link>
           </li>
