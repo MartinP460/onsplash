@@ -3,13 +3,14 @@ import NextLink from 'next/link'
 
 interface LinkProps {
   href: string
+  className?: string
   children: ReactNode
 }
 
-const Link = ({ href, children }: LinkProps) => {
+const Link = ({ href, className, children }: LinkProps) => {
   return (
     <NextLink href={href}>
-      <a className="underline text-gray-500">{children}</a>
+      <a className={`underline text-gray-500 ${className}`}>{children}</a>
     </NextLink>
   )
 }

@@ -7,15 +7,16 @@ import Hero from '../common/components/Hero'
 import Gallery from '../modules/gallery/components/Gallery'
 
 interface HomeProps {
+  heroPost: Post
   initialPosts: Post[]
 }
 
-const Index: NextPage<HomeProps> = ({ initialPosts }) => {
+const Index: NextPage<HomeProps> = ({ heroPost, initialPosts }) => {
   return (
     <Layout>
-      <Hero post={initialPosts[0]} />
+      <Hero post={heroPost} />
       <Gallery
-        initialPosts={initialPosts.slice(1)}
+        initialPosts={initialPosts}
         scrollQuery={{ query: GET_ALL_POSTS }}
       />
     </Layout>
@@ -35,9 +36,14 @@ export const getStaticProps: GetStaticProps = async () => {
     variables: { offset: 0 }
   })
 
+  const heroImageIndex = Math.floor(Math.random() * data.posts.length)
+  const heroImage = data.posts[heroImageIndex]
+  const posts = data.posts.filter((post: Post) => post.id !== heroImage.id)
+
   return {
     props: {
-      initialPosts: data.posts
+      heroPost: heroImage,
+      initialPosts: posts
     }
   }
 }

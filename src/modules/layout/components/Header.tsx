@@ -1,7 +1,7 @@
 import { AcademicCapIcon } from '@heroicons/react/solid'
 import { useUserContext } from '../../../common/context/userContext'
 import Link from 'next/link'
-import Searchbar from './Searchbar'
+import Searchbar from '../../../common/components/Searchbar'
 import Menu from './Menu'
 import NavLink from './NavLink'
 import ProfileDropdown from './ProfileDropdown'

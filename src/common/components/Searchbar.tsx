@@ -5,7 +5,11 @@ import useSuggestions from '../hooks/useSuggestions'
 import SearchSuggestions from './SearchSuggestions'
 import TrendingSuggestions from './TrendingSuggestions'
 
-const Searchbar = () => {
+interface SearchbarProps {
+  className?: string
+}
+
+const Searchbar = ({ className }: SearchbarProps) => {
   const router = useRouter()
   const [suggestions, query, setQuery] = useSuggestions()
   const [focused, setFocused] = useState(false)
@@ -17,7 +21,9 @@ const Searchbar = () => {
 
   return (
     <div className="relative w-full">
-      <div className="bg-gray-200 border rounded-full hover:bg-transparent transition-fast">
+      <div
+        className={`bg-gray-200 border rounded-full hover:bg-transparent transition-fast ${className}`}
+      >
         <form onSubmit={handleSubmit} className="flex items-center w-full">
           <SearchIcon className="h-5 ml-4 mr-1 text-gray-500" />
           <input
