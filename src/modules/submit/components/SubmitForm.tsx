@@ -80,15 +80,17 @@ const SubmitForm = () => {
             className="underline text-gray-500"
             href="https://www.unsplash.com"
             target="_blank"
+            rel="noreferrer"
           >
             Unsplash
           </a>
           &nbsp; can be uploaded. Therefore, the domain name has to be
-          'images.unsplash.com'. Get random image&nbsp;
+          &apos;images.unsplash.com&apos;. Get random image&nbsp;
           <a
             className="underline text-gray-500"
             href="https://source.unsplash.com/random"
             target="_blank"
+            rel="noreferrer"
           >
             here.
           </a>
@@ -112,7 +114,7 @@ const SubmitForm = () => {
       <div className="grid grid-rows-2 lg:grid-cols-2 lg:grid-rows-1 h-5/6 mt-10 gap-4 pb-4">
         <div className="bg-gray-200 relative rounded flex flex-col items-center justify-center text-2xl">
           {watchUrl && dimensions.width && isValidUnsplashHttpUrl(watchUrl) ? (
-            <Image src={watchUrl} layout="fill" objectFit="scale-down" />
+            <Image src={watchUrl} layout="fill" objectFit="scale-down" alt="" />
           ) : (
             <>
               <p>Image preview.</p>

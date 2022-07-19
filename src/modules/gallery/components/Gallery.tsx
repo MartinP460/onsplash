@@ -70,7 +70,7 @@ const Gallery = ({ scrollQuery, initialPosts }: HeroProps) => {
       ) : (
         <div className="flex flex-col justify-center items-center gap-4 mt-24">
           <QuestionMarkCircleIcon className="w-8 text-primary" />
-          <p className="text-xl">Hmmmm... We couldn't find any photos.</p>
+          <p className="text-xl">Hmmmm... We couldn&apos;t find any photos.</p>
         </div>
       )}
       <Modal

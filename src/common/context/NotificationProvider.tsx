@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useReducer,
-  Dispatch,
-  ReactNode
-} from 'react'
+import { createContext, useContext, useReducer, ReactNode } from 'react'
 
 export type Toast = {
   id: string

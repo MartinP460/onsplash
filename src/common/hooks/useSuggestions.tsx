@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import { useState } from 'react'
 import { searchSuggestions } from '../utils/data'
 

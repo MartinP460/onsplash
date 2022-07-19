@@ -35,7 +35,7 @@ const TrendingSuggestions = ({ show }: { show: boolean }) => {
                 <button className="text-sm text-gray-500 border border-text hover:bg-gray-100 rounded-sm">
                   <div className="flex items-center relative">
                     <div className="w-8 h-8">
-                      <Image src={topic.image} width={32} height={32} />
+                      <Image src={topic.image} width={32} height={32} alt="" />
                     </div>
                     <p className="mx-4 capitalize">{topic.tag}</p>
                   </div>

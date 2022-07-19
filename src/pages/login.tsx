@@ -68,7 +68,8 @@ const Login: NextPage = () => {
           )}
         </form>
         <div className="flex items-center justify-center p-7 border w-full mt-8">
-          Don't have an account?&nbsp;<Link href="/signup">Join Onsplash</Link>
+          Don&apos;t have an account?&nbsp;
+          <Link href="/signup">Join Onsplash</Link>
         </div>
       </div>
     </div>

@@ -73,7 +73,9 @@ const Menu = () => {
                         </a>
                       </Link>
                     </li>
-                    <li className="my-4">{i == 1 && j == 1 && <Socials />}</li>
+                    <li className="my-4">
+                      {i === 1 && j === 1 && <Socials />}
+                    </li>
                   </ul>
                 ))}
               </details>
@@ -99,7 +101,9 @@ const Menu = () => {
                         </a>
                       </Link>
                     </li>
-                    <li className="my-4">{i == 1 && j == 1 && <Socials />}</li>
+                    <li className="my-4">
+                      {i === 1 && j === 1 && <Socials />}
+                    </li>
                   </ul>
                 ))}
               </div>

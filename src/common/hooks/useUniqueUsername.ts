@@ -1,5 +1,5 @@
 import { ApolloError, useLazyQuery } from '@apollo/client'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { GET_USER } from '../graphql/user'
 
 const useUniqueUsername = () => {
@@ -9,13 +9,16 @@ const useUniqueUsername = () => {
       data.users.length === 0 ? setIsUnique(true) : setIsUnique(false)
   })
 
-  const checkUsername = (username: string): void => {
-    getUsers({
-      variables: {
-        displayName: username
-      }
-    })
-  }
+  const checkUsername = useCallback(
+    (username: string): void => {
+      getUsers({
+        variables: {
+          displayName: username
+        }
+      })
+    },
+    [getUsers]
+  )
 
   return [checkUsername, { isUnique, loading, error }] as [
     (username: string) => void,

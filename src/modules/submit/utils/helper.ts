@@ -32,7 +32,7 @@ export const getImageDimensions = (
 
 export const isValidImage = async (url: string): Promise<boolean> => {
   try {
-    const dimensions = await getImageDimensions(url)
+    await getImageDimensions(url)
     return true
   } catch (_) {
     return false

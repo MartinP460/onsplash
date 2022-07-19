@@ -7,13 +7,13 @@ import { useRouter } from 'next/router'
 import useToast from '../../../common/hooks/useToast'
 import Button from '../../../common/components/Button'
 
-interface LikeButton {
+interface LikeButtonProps {
   postId: string
   likes: string[]
   className?: string
 }
 
-const LikeButton = ({ postId, likes, className }: LikeButton) => {
+const LikeButton = ({ postId, likes, className }: LikeButtonProps) => {
   const user = useUserContext()
   const router = useRouter()
   const toast = useToast()

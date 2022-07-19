@@ -30,6 +30,7 @@ const PostModal = ({ post }: PostModalProps) => {
         </div>
       </div>
       <div className="mt-4">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={post.image.url}
           alt={post.description}

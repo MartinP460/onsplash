@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, FormEvent } from 'react'
 import { SearchIcon, XIcon } from '@heroicons/react/solid'
 import { useRouter } from 'next/router'
 import useSuggestions from '../hooks/useSuggestions'
@@ -14,7 +14,7 @@ const Searchbar = ({ className }: SearchbarProps) => {
   const [suggestions, query, setQuery] = useSuggestions()
   const [focused, setFocused] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     router.push(`/s?query=${query}`)
   }

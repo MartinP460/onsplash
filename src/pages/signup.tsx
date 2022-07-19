@@ -68,6 +68,7 @@ const Signup: NextPage = () => {
           src="https://images.unsplash.com/photo-1654647025659-868b3d7961f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY1NzI3MTQ3NA&ixlib=rb-1.2.1&q=80&w=1080"
           layout="fill"
           objectFit="cover"
+          alt=""
           className="absolute -z-10 brightness-50"
         />
       </div>

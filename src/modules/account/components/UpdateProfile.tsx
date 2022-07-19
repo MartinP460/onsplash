@@ -47,7 +47,7 @@ const UpdateProfile = ({ user }: { user: User | null }) => {
   const watchUsername = watch('username')
   useMemo(() => {
     checkUsername(watchUsername)
-  }, [watchUsername])
+  }, [checkUsername, watchUsername])
 
   const onSubmit = async (data: FormValues) => {
     const { firstName, lastName, username, email } = data

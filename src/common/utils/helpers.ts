@@ -2,9 +2,9 @@ import { Post } from '../types'
 
 export const splitArrayToThreeSubArrays = (arr: Post[]) => {
   // initiate sub arrays corresponding to each column
-  let result: Post[][] = [[], [], []]
+  const result: Post[][] = [[], [], []]
   // initiate array of heights for each column
-  let heights = [0, 0, 0]
+  const heights = [0, 0, 0]
 
   arr.forEach((_, i) => {
     // find the column with the lowest height
