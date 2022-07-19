@@ -3,8 +3,8 @@ import { useQuery } from '@apollo/client'
 import { GET_USER } from '../../common/graphql/user'
 import { GET_POSTS_BY_USER, GET_LIKED_POSTS } from '../../common/graphql/posts'
 import { Tab } from '@headlessui/react'
-import { QuestionMarkCircleIcon } from '@heroicons/react/solid'
 import Layout from '../../modules/layout/components/Layout'
+import Error from '../../common/components/Error'
 import AvatarIcon from '../../common/components/AvatarIcon'
 import Gallery from '../../modules/gallery/components/Gallery'
 
@@ -18,16 +18,7 @@ const Profile: NextPage<ProfileProps> = ({ username }) => {
   })
 
   if (data?.users.length === 0) {
-    return (
-      <Layout title="404 Not Found">
-        <div className="flex flex-col justify-center items-center gap-4 h-[90vh]">
-          <QuestionMarkCircleIcon className="w-8 text-primary" />
-          <p className="text-xl">
-            There was an error fetching the user - maybe they don't exist.
-          </p>
-        </div>
-      </Layout>
-    )
+    return <Error errorType="User Not Found" title="No user here..." />
   }
 
   const user = data?.users[0]

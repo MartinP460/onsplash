@@ -15,6 +15,7 @@ const Hero = ({ post }: HeroProps) => {
         layout="fill"
         objectFit="cover"
         priority
+        alt=""
         className="-z-10 brightness-50 absolute"
       />
       <div className="h-full absolute text-white flex items-end pb-4 px-4">
@@ -39,12 +40,12 @@ const Hero = ({ post }: HeroProps) => {
       <div className="h-full w-full max-w-4xl mx-auto flex flex-col justify-center px-8">
         <h1 className="text-4xl font-bold mb-6 text-white">Onsplash</h1>
         <p className="text-white">
-          Probably not the internet's source of freely-usable images.
+          Probably not the internet&apos;s source of freely-usable images.
         </p>
         <p className="text-white mb-4 mt-1">
           Powered by creators and one developer.
         </p>
-        <Searchbar className="hover:bg-gray-200 rounded-sm py-2 hidden md:block" />
+        <Searchbar className="hover:!bg-gray-200 rounded-sm py-2 hidden md:block" />
       </div>
     </div>
   )
