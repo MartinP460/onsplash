@@ -1,11 +1,11 @@
 import { Popover } from '@headlessui/react'
 import { MenuIcon, ChevronDownIcon } from '@heroicons/react/solid'
+import { useWindowSize } from 'rooks'
 import {
   BriefcaseIcon,
   UserGroupIcon,
   DocumentTextIcon
 } from '@heroicons/react/outline'
-import { useWindowSize } from 'rooks'
 import Link from 'next/link'
 import Socials from './Socials'
 
@@ -15,7 +15,11 @@ const Menu = () => {
   const menuItems = [
     {
       title: 'Company',
-      items: ['about', 'history', 'press']
+      items: [
+        { label: 'about', href: '/about' },
+        { label: 'history', href: '/history' },
+        { label: 'press', href: '/press' }
+      ]
     },
     {
       title: 'Community',
@@ -26,7 +30,7 @@ const Menu = () => {
     },
     {
       title: 'Legal',
-      items: ['license']
+      items: [{ label: 'license', href: '/license' }]
     }
   ]
 
@@ -46,7 +50,7 @@ const Menu = () => {
       <Popover.Button className="outline-none">
         <MenuIcon className="h-6 text-primary hover:text-primary-hover" />
       </Popover.Button>
-      <Popover.Panel className="absolute z-10 border top-10 right-0 border-gray-200 rounded py-4 px-6 shadow-lg bg-white min-w-[268px] md:py-8">
+      <Popover.Panel className="absolute z-50 border top-10 right-0 border-gray-200 rounded py-4 px-6 shadow-lg bg-white min-w-[268px] md:py-8">
         {!innerWidth || innerWidth < 768 ? (
           <ul>
             {menuItems.map((detail, i) => (
@@ -61,23 +65,18 @@ const Menu = () => {
                   </div>
                   <ChevronDownIcon className="h-6 text-gray-300 group-open:rotate-180 transition-transform" />
                 </summary>
-                {detail.items.map((item, j) => (
-                  <ul
-                    key={typeof item === 'string' ? item : item.label}
-                    className="pl-9"
-                  >
-                    <li className="my-4">
-                      <Link href={typeof item === 'string' ? item : item.href}>
+                <ul className="pl-9">
+                  {detail.items.map((item) => (
+                    <li key={item.label} className="my-4">
+                      <Link href={item.href}>
                         <a className="capitalize text-primary hover:text-primary-hover">
-                          {typeof item === 'string' ? item : item.label}
+                          {item.label}
                         </a>
                       </Link>
                     </li>
-                    <li className="my-4">
-                      {i === 1 && j === 1 && <Socials />}
-                    </li>
-                  </ul>
-                ))}
+                  ))}
+                  <li className="my-4">{i === 1 && <Socials />}</li>
+                </ul>
               </details>
             ))}
           </ul>
@@ -89,23 +88,18 @@ const Menu = () => {
                   {getItemIcon(detail.title)}
                   <p className="font-bold ml-4">{detail.title}</p>
                 </div>
-                {detail.items.map((item, j) => (
-                  <ul
-                    key={typeof item === 'string' ? item : item.label}
-                    className="pl-9"
-                  >
-                    <li className="my-4">
-                      <Link href={typeof item === 'string' ? item : item.href}>
+                <ul className="pl-9">
+                  {detail.items.map((item) => (
+                    <li className="my-4" key={item.label}>
+                      <Link href={item.href}>
                         <a className="capitalize text-primary hover:text-primary-hover whitespace-nowrap">
-                          {typeof item === 'string' ? item : item.label}
+                          {item.label}
                         </a>
                       </Link>
                     </li>
-                    <li className="my-4">
-                      {i === 1 && j === 1 && <Socials />}
-                    </li>
-                  </ul>
-                ))}
+                  ))}
+                  <li className="my-4">{i === 1 && <Socials />}</li>
+                </ul>
               </div>
             ))}
           </div>
