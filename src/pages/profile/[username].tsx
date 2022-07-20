@@ -50,24 +50,24 @@ const Profile: NextPage<ProfileProps> = ({ username }) => {
           <Tab.List as="div" className="border-b-2 text-primary md:mb-8">
             <Tab>
               {({ selected }) => (
-                <button
+                <div
                   className={`py-4 px-4 ${
                     selected && 'border-b-2 border-black text-black -mb-2'
                   }`}
                 >
                   Photos
-                </button>
+                </div>
               )}
             </Tab>
             <Tab>
               {({ selected }) => (
-                <button
+                <div
                   className={`py-4 px-4 ${
                     selected && 'border-b-2 border-black text-black -mb-2'
                   }`}
                 >
                   Likes
-                </button>
+                </div>
               )}
             </Tab>
           </Tab.List>

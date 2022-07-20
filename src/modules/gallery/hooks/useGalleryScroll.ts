@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Post } from '../../../common/types'
-import { DocumentNode, useLazyQuery } from '@apollo/client'
+import { DocumentNode, useQuery, useLazyQuery } from '@apollo/client'
 
 /*
 useGalleryScroll is a custom hook that takes an object containing a graphQL query
@@ -14,22 +14,28 @@ const useGalleryScroll = (
       [key: string]: string | number
     }
   },
-  initialPosts?: Post[]
+  initialPosts: Post[] = []
 ): {
   posts: Post[]
   handleRefresh(): void
 } => {
-  const [posts, setPosts] = useState(initialPosts || [])
   const [page, setPage] = useState(0)
+  const [posts, setPosts] = useState(initialPosts)
   const [getPosts] = useLazyQuery(queryObject.query, {
     variables: { offset: page * 20, ...queryObject.variables },
-    onCompleted: (data) => setPosts([...posts, ...data.posts])
+    onCompleted: (data) => setPosts(posts.concat(data.posts))
   })
 
-  useEffect(() => {
-    if (initialPosts) return
-    getPosts()
-  }, [initialPosts, getPosts])
+  useQuery(queryObject.query, {
+    variables: {
+      offset: 0,
+      ...queryObject.variables
+    },
+    onCompleted: (data) => {
+      if (initialPosts.length > 0) return
+      setPosts(posts.concat(data.posts))
+    }
+  })
 
   const handleRefresh = () => {
     setPage(page + 1)
