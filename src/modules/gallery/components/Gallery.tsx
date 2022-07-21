@@ -21,9 +21,10 @@ interface HeroProps {
     }
   }
   initialPosts?: Post[]
+  filter?: ((post: Post) => boolean) | null
 }
 
-const Gallery = ({ scrollQuery, initialPosts }: HeroProps) => {
+const Gallery = ({ scrollQuery, initialPosts, filter }: HeroProps) => {
   const router = useRouter()
   const [activePost, setActivePost] = useState<Post | null>(null)
   const [incrementViews] = useMutation(INCREMENT_VIEWS)
@@ -43,11 +44,13 @@ const Gallery = ({ scrollQuery, initialPosts }: HeroProps) => {
     setActivePost(post)
   }
 
+  const transformedPosts = filter ? posts.filter(filter) : posts
+
   return (
     <>
       {posts && posts.length !== 0 ? (
         <InfiniteScroll
-          dataLength={posts.length}
+          dataLength={transformedPosts.length}
           next={handleRefresh}
           hasMore={true}
           loader={
@@ -55,7 +58,7 @@ const Gallery = ({ scrollQuery, initialPosts }: HeroProps) => {
           }
           className="max-w-7xl mx-auto md:px-5 w-full md:grid md:grid-cols-3 md:grid-rows-1 md:gap-5"
         >
-          {splitArrayToThreeSubArrays(posts).map((splitPosts, i) => (
+          {splitArrayToThreeSubArrays(transformedPosts).map((splitPosts, i) => (
             <div key={i} className="grid grid-cols-1 h-fit gap-5">
               {splitPosts.map((post) => (
                 <Thumbnail

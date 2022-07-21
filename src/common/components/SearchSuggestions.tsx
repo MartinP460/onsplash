@@ -9,7 +9,7 @@ const SearchSuggestions = ({
 }) => {
   return (
     <ul
-      className={`absolute w-full z-10 mt-1 border border-text rounded-lg bg-white shadow ${
+      className={`absolute w-full z-30 mt-1 border border-text rounded-lg bg-white shadow ${
         show ? 'block' : 'hidden'
       }`}
     >

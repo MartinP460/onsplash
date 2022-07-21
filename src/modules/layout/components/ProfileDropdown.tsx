@@ -19,7 +19,7 @@ const ProfileDropdown = ({ user }: ProfileIconProps) => {
         <AvatarIcon url={user.avatarUrl} className="w-8 h-8" />
       </Popover.Button>
       <DropdownTransition>
-        <Popover.Panel className="absolute z-10 top-12 border right-0 border-text rounded bg-white py-1 shadow-lg w-[250px] md:w-[178px]">
+        <Popover.Panel className="absolute z-50 top-12 border right-0 border-text rounded bg-white py-1 shadow-lg w-[250px] md:w-[178px]">
           <ul>
             <li className="py-2 px-3 my-1 hover:bg-gray-100 transition-fast">
               <Link href={`/profile/${user.displayName}`}>

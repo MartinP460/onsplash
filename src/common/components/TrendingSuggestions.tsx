@@ -7,7 +7,7 @@ import Button from './Button'
 const TrendingSuggestions = ({ show }: { show: boolean }) => {
   return (
     <div
-      className={`absolute w-full z-10 mt-1 border border-text rounded-lg bg-white shadow hidden ${
+      className={`absolute w-full z-30 mt-1 border border-text rounded-lg bg-white shadow hidden ${
         show ? 'md:block' : 'hidden'
       }`}
     >
