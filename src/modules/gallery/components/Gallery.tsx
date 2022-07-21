@@ -7,11 +7,12 @@ import { DocumentNode } from 'graphql'
 import { QuestionMarkCircleIcon } from '@heroicons/react/solid'
 import { useMutation } from '@apollo/client'
 import { INCREMENT_VIEWS } from '../../../common/graphql/posts'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import useGalleryScroll from '../hooks/useGalleryScroll'
 import Thumbnail from './Thumbnail'
 import Modal from '../../../common/components/Modal'
 import PostModal from './PostModal'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import Loader from './Loader'
 
 interface HeroProps {
   scrollQuery: {
@@ -53,9 +54,7 @@ const Gallery = ({ scrollQuery, initialPosts, filter }: HeroProps) => {
           dataLength={transformedPosts.length}
           next={handleRefresh}
           hasMore={true}
-          loader={
-            <p>Onsplash. Make something great. Or whatever their slogan is.</p>
-          }
+          loader={<Loader />}
           className="max-w-7xl mx-auto md:px-5 w-full md:grid md:grid-cols-3 md:grid-rows-1 md:gap-5"
         >
           {splitArrayToThreeSubArrays(transformedPosts).map((splitPosts, i) => (
