@@ -40,11 +40,15 @@ const Thumbnail = ({ post, onImageClick }: ThumbnailProps) => {
           <LikeButton
             postId={post.id}
             likes={post.likes}
-            className="self-end border-0"
+            className="self-end border-0 bg-gray-200 hover:bg-white"
           />
           <div className="flex justify-between">
             <Avatar user={post.user} textColor="white" />
-            <DownloadButton postId={post.id} url={post.image.url} />
+            <DownloadButton
+              postId={post.id}
+              url={post.image.url}
+              className="bg-gray-200 hover:bg-white"
+            />
           </div>
         </div>
       </a>

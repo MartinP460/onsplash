@@ -17,7 +17,7 @@ const DownloadButton = ({ postId, url, className }: DownloadButtonProps) => {
   return (
     <Button
       variation="outline"
-      className={`bg-gray-200 hover:cursor-pointer hover:bg-white ${className}`}
+      className={`hover:cursor-pointer ${className}`}
       onClick={(e) => {
         e.stopPropagation()
         incrementDownloads({ variables: { id: postId } })
