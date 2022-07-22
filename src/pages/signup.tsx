@@ -2,7 +2,6 @@ import { NextPage } from 'next'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignUpEmailPassword } from '@nhost/nextjs'
 import { useRouter } from 'next/router'
-import { AcademicCapIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
 import Link from '../common/components/Link'
 import Input from '../common/components/Input'
@@ -57,7 +56,13 @@ const Signup: NextPage = () => {
       <div className="relative">
         <div className="flex flex-col text-white px-3 pt-4 pb-16 md:h-[100vh] md:w-[40vw] md:px-12 md:pt-10">
           <Link href="/">
-            <AcademicCapIcon className="w-12 text-white drop-shadow-lg" />
+            <Image
+              src="/images/onsplash.png"
+              width={48}
+              height={48}
+              alt="Onsplash logo"
+              className="drop-shadow-lg invert"
+            />
           </Link>
           <div className="mt-6 md:h-full md:flex md:flex-col md:justify-center">
             <h2 className="text-3xl font-bold md:text-5xl">Join Onsplash</h2>

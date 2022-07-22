@@ -1,4 +1,3 @@
-import { AcademicCapIcon } from '@heroicons/react/solid'
 import Image from 'next/image'
 import Layout from '../modules/layout/components/Layout'
 
@@ -19,7 +18,13 @@ const About = () => {
       <div className="px-5 pt-8 bg-text pb-8">
         <div className="md:h-[600px] grid grid-rows-2 md:grid-cols-2 md:grid-rows-1 max-w-7xl mx-auto">
           <div className="flex flex-col justify-center text-center md:text-left">
-            <AcademicCapIcon className="w-16 shrink-0 self-center md:self-start" />
+            <div className="w-16 h-16 relative shrink-0 self-center md:self-start">
+              <Image
+                src="/images/onsplash.png"
+                layout="fill"
+                alt="Onsplash logo"
+              />
+            </div>
             <h1 className="text-4xl font-bold mt-6">
               Onsplash is a clone of {unsplashText()}
             </h1>

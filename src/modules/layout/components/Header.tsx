@@ -1,6 +1,6 @@
-import { AcademicCapIcon } from '@heroicons/react/solid'
 import { useUserContext } from '../../../common/context/userContext'
 import Link from 'next/link'
+import Image from 'next/image'
 import Searchbar from '../../../common/components/Searchbar'
 import Menu from './Menu'
 import NavLink from './NavLink'
@@ -16,7 +16,12 @@ const Header = () => {
         <div className="flex-none">
           <Link href="/">
             <a>
-              <AcademicCapIcon className="w-8 h-8" />
+              <Image
+                src="/images/onsplash.png"
+                width={32}
+                height={32}
+                alt="Onsplash logo"
+              />
             </a>
           </Link>
         </div>

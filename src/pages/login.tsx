@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignInEmailPassword } from '@nhost/nextjs'
 import { useRouter } from 'next/router'
-import { AcademicCapIcon } from '@heroicons/react/solid'
+import Image from 'next/image'
 import Link from '../common/components/Link'
 import Input from '../common/components/Input'
 import Button from '../common/components/Button'
@@ -17,7 +17,12 @@ const Login: NextPage = () => {
     register,
     handleSubmit,
     formState: { errors, isDirty }
-  } = useForm<FormValues>()
+  } = useForm<FormValues>({
+    defaultValues: {
+      email: '',
+      password: ''
+    }
+  })
   const router = useRouter()
 
   const { signInEmailPassword, isLoading, isSuccess, isError, error } =
@@ -38,7 +43,12 @@ const Login: NextPage = () => {
     <div className="flex items-center h-screen">
       <div className="flex flex-col items-center w-screen p-3 md:w-3/5 lg:w-2/5 mx-auto">
         <div className="flex flex-col items-center ">
-          <AcademicCapIcon className="w-16 h-16" />
+          <Image
+            src="/images/onsplash.png"
+            width={64}
+            height={64}
+            alt="Onsplash logo"
+          />
           <h1 className="text-2xl font-bold mt-4">Login</h1>
           <p className="mt-3">Welcome back.</p>
         </div>
