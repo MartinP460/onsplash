@@ -18,20 +18,20 @@ const Menu = () => {
       title: 'Company',
       items: [
         { label: 'about', href: '/about' },
-        { label: 'history', href: '/history' },
-        { label: 'press', href: '/press' }
+        { label: 'history', href: '/about' },
+        { label: 'press', href: '/about' }
       ]
     },
     {
       title: 'Community',
       items: [
-        { label: 'become a contributor', href: '/community' },
-        { label: 'topics', href: '/t' }
+        { label: 'become a contributor', href: '/about' },
+        { label: 'topics', href: '/about' }
       ]
     },
     {
       title: 'Legal',
-      items: [{ label: 'license', href: '/license' }]
+      items: [{ label: 'Project', href: '/about' }]
     }
   ]
 
