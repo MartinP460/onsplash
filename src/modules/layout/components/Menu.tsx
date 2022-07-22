@@ -48,7 +48,7 @@ const Menu = () => {
 
   return (
     <Popover className="flex items-center relative">
-      <Popover.Button className="outline-none">
+      <Popover.Button className="outline-none" type="button" aria-label="menu">
         <MenuIcon className="h-6 text-primary hover:text-primary-hover" />
       </Popover.Button>
       <DropdownTransition>

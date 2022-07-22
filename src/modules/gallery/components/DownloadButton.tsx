@@ -17,6 +17,7 @@ const DownloadButton = ({ postId, url, className }: DownloadButtonProps) => {
   return (
     <Button
       variation="outline"
+      type="button"
       className={`hover:cursor-pointer ${className}`}
       onClick={(e) => {
         e.stopPropagation()

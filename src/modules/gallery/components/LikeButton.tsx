@@ -54,6 +54,7 @@ const LikeButton = ({ postId, likes, className }: LikeButtonProps) => {
   return (
     <Button
       variation="outline"
+      type="button"
       className={`hover:cursor-pointer ${
         liked ? '!bg-red-500 !hover:bg-red-600' : ''
       } ${className}`}

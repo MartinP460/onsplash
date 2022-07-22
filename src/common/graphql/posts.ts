@@ -2,7 +2,7 @@ import { gql } from '@apollo/client'
 
 export const GET_ALL_POSTS = gql`
   query ($offset: Int!) {
-    posts(limit: 20, offset: $offset) {
+    posts(limit: 20, offset: $offset, order_by: { created_at: asc }) {
       created_at
       description
       id
