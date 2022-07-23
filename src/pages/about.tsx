@@ -92,51 +92,53 @@ const About = () => {
           </p>
         </div>
       </div>
-      <div className="px-5 py-12 bg-gray-500 grid grid-rows-2 gap-4 md:grid-rows-1 md:grid-cols-2">
-        <div>
-          <h2 className="text-3xl font-bold text-white">Open-source</h2>
-          <p className="text-white mt-4">
-            The source code is available at the{' '}
+      <div className="px-5 py-12 bg-gray-500">
+        <div className="max-w-7xl mx-auto grid grid-rows-2 gap-4 md:grid-rows-1 md:grid-cols-2">
+          <div>
+            <h2 className="text-3xl font-bold text-white">Open-source</h2>
+            <p className="text-white mt-4">
+              The source code is available at the{' '}
+              <a
+                href="https://github.com/MartinP460/onsplash"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-gray-200"
+              >
+                the Github repository
+              </a>
+              .
+            </p>
+            <p className="mt-4 text-white">
+              The project was created with the help of Hasura and Nhost.
+            </p>
+          </div>
+          <div className="w-full flex flex-col items-center justify-center gap-4">
             <a
               href="https://github.com/MartinP460/onsplash"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline text-gray-200"
             >
-              the Github repository
+              <Image
+                src="/images/github.png"
+                width={64}
+                height={64}
+                alt="Github logo"
+                className="hover:brightness-75 transition-fast"
+              />
             </a>
-            .
-          </p>
-          <p className="mt-4 text-white">
-            The project was created with the help of Hasura and Nhost.
-          </p>
-        </div>
-        <div className="w-full flex flex-col items-center justify-center gap-4">
-          <a
-            href="https://github.com/MartinP460/onsplash"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src="/images/github.png"
-              width={64}
-              height={64}
-              alt="Github logo"
-              className="hover:brightness-75 transition-fast"
-            />
-          </a>
-          <p className="text-white">
-            Created by{' '}
-            <a
-              href="https://github.com/MartinP460"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-gray-200"
-            >
-              Martin Polley
-            </a>
-            .
-          </p>
+            <p className="text-white">
+              Created by{' '}
+              <a
+                href="https://github.com/MartinP460"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-gray-200"
+              >
+                Martin Polley
+              </a>
+              .
+            </p>
+          </div>
         </div>
       </div>
     </Layout>
