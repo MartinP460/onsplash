@@ -1,12 +1,12 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { useQuery } from '@apollo/client'
-import { GET_USER } from '../../common/graphql/user'
-import { GET_POSTS_BY_USER, GET_LIKED_POSTS } from '../../common/graphql/posts'
+import { GET_USER } from 'common/graphql/user'
+import { GET_POSTS_BY_USER, GET_LIKED_POSTS } from 'common/graphql/posts'
 import { Tab } from '@headlessui/react'
-import Layout from '../../modules/layout/components/Layout'
-import Error from '../../common/components/Error'
-import AvatarIcon from '../../common/components/AvatarIcon'
-import Gallery from '../../modules/gallery/components/Gallery'
+import Layout from 'modules/layout/components/Layout'
+import Error from 'common/components/Error'
+import AvatarIcon from 'common/components/AvatarIcon'
+import Gallery from 'modules/gallery/components/Gallery'
 
 interface ProfileProps {
   username: string

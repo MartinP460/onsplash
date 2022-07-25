@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import Layout from '../modules/layout/components/Layout'
+import Layout from 'modules/layout/components/Layout'
 
 const About = () => {
   const unsplashText = () => (

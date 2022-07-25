@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { Post } from '../../../common/types/index'
+import { Post } from 'common/types/index'
 import Image from 'next/image'
-import Avatar from '../../../common/components/Avatar'
+import Avatar from 'common/components/Avatar'
 import LikeButton from './LikeButton'
 import DownloadButton from './DownloadButton'
 

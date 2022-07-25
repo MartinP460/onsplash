@@ -2,7 +2,7 @@ import { Popover } from '@headlessui/react'
 import { User } from '@nhost/core'
 import { useSignOut } from '@nhost/react'
 import Link from 'next/link'
-import AvatarIcon from '../../../common/components/AvatarIcon'
+import AvatarIcon from 'common/components/AvatarIcon'
 import SubmitButton from '../../submit/components/SubmitButton'
 import DropdownTransition from './DropdownTransition'
 

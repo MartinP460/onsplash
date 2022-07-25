@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Post } from '../../../common/types'
+import { Post } from 'common/types'
 import { DocumentNode, useQuery, useLazyQuery } from '@apollo/client'
 
 /*

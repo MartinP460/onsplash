@@ -1,12 +1,12 @@
 import { useForm } from 'react-hook-form'
 import { useMutation } from '@apollo/client'
-import { UPDATE_USER_MUTATION } from '../../../common/graphql/user'
+import { UPDATE_USER_MUTATION } from 'common/graphql/user'
 import { useMemo } from 'react'
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/solid'
-import useUniqueUsername from '../../../common/hooks/useUniqueUsername'
-import useToast from '../../../common/hooks/useToast'
-import Input from '../../../common/components/Input'
-import Button from '../../../common/components/Button'
+import useUniqueUsername from 'common/hooks/useUniqueUsername'
+import useToast from 'common/hooks/useToast'
+import Input from 'common/components/Input'
+import Button from 'common/components/Button'
 import { User } from '@nhost/core'
 
 type FormValues = {

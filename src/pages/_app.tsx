@@ -1,11 +1,11 @@
 import { AppProps } from 'next/app'
 import { NhostNextProvider, NhostClient } from '@nhost/nextjs'
 import { NhostApolloProvider } from '@nhost/react-apollo'
-import { UserProvider } from '../common/context/userContext'
-import { ToastProvider } from '../common/context/NotificationProvider'
-import Toast from '../common/components/Toast'
-import SubmitModal from '../modules/submit/components/SubmitModal'
-import '../styles/globals.css'
+import { UserProvider } from 'common/context/userContext'
+import { ToastProvider } from 'common/context/NotificationProvider'
+import Toast from 'common/components/Toast'
+import SubmitModal from 'modules/submit/components/SubmitModal'
+import 'styles/globals.css'
 
 const nhost = new NhostClient({
   backendUrl: process.env.NEXT_PUBLIC_NHOST_BACKEND_URL || ''

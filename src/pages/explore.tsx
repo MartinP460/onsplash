@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import { GET_ALL_POSTS } from '../common/graphql/posts'
-import { Post } from './../common/types/index'
+import { Post } from 'common/types/index'
 import { RadioGroup } from '@headlessui/react'
-import Layout from '../modules/layout/components/Layout'
-import Button from '../common/components/Button'
-import Gallery from '../modules/gallery/components/Gallery'
+import Layout from 'modules/layout/components/Layout'
+import Button from 'common/components/Button'
+import Gallery from 'modules/gallery/components/Gallery'
 
 const Explore = () => {
   const [filter, setFilter] = useState<'landscape' | 'portrait' | null>(null)

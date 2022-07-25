@@ -1,10 +1,10 @@
 import { User } from '@nhost/core'
 import { useMutation } from '@apollo/client'
-import { DELETE_USER } from '../../../common/graphql/user'
+import { DELETE_USER } from 'common/graphql/user'
 import { useSignOut } from '@nhost/react'
 import useConfirm from '../hooks/useConfirm'
-import useToast from '../../../common/hooks/useToast'
-import Button from '../../../common/components/Button'
+import useToast from 'common/hooks/useToast'
+import Button from 'common/components/Button'
 
 const DeleteAccount = ({ user }: { user: User | null }) => {
   const toast = useToast()

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import Modal from '../../../common/components/Modal'
+import Modal from 'common/components/Modal'
 import SubmitForm from './SubmitForm'
 
 const SubmitModal = () => {

@@ -1,4 +1,4 @@
-import Error from '../common/components/Error'
+import Error from 'common/components/Error'
 
 const FourOFour = () => <Error />
 

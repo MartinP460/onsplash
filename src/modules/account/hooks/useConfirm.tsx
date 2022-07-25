@@ -1,6 +1,6 @@
 import { useState, ReactElement } from 'react'
 import { Dialog } from '@headlessui/react'
-import Button from '../../../common/components/Button'
+import Button from 'common/components/Button'
 
 const useConfirm = (title: string, description: string, message: string) => {
   const [promise, setPromise] = useState<any>(null)

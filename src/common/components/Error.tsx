@@ -1,4 +1,4 @@
-import Layout from '../../modules/layout/components/Layout'
+import Layout from 'modules/layout/components/Layout'
 import Link from 'next/link'
 
 interface ErrorProps {

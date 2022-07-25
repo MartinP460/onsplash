@@ -1,9 +1,9 @@
 import { GetServerSideProps, NextPage } from 'next'
 import { useQuery, useMutation } from '@apollo/client'
-import { GET_POST, INCREMENT_VIEWS } from '../../common/graphql/posts'
-import Layout from '../../modules/layout/components/Layout'
-import Error from '../../common/components/Error'
-import PostModal from '../../modules/gallery/components/PostModal'
+import { GET_POST, INCREMENT_VIEWS } from 'common/graphql/posts'
+import Layout from 'modules/layout/components/Layout'
+import Error from 'common/components/Error'
+import PostModal from 'modules/gallery/components/PostModal'
 
 interface PhotoProps {
   id: string

@@ -1,7 +1,7 @@
-import { Post } from '../../../common/types/index'
+import { Post } from 'common/types/index'
 import { CalendarIcon, LocationMarkerIcon } from '@heroicons/react/solid'
 import TimeAgo from 'react-timeago'
-import Avatar from '../../../common/components/Avatar'
+import Avatar from 'common/components/Avatar'
 import LikeButton from './LikeButton'
 import DownloadButton from './DownloadButton'
 

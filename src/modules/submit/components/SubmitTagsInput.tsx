@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Input from '../../../common/components/Input'
-import Button from '../../../common/components/Button'
+import Input from 'common/components/Input'
+import Button from 'common/components/Button'
 
 interface SubmitTagsInputProps {
   tags: string[]

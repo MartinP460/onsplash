@@ -3,9 +3,9 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { useSignUpEmailPassword } from '@nhost/nextjs'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import Link from '../common/components/Link'
-import Input from '../common/components/Input'
-import Button from './../common/components/Button'
+import Link from 'common/components/Link'
+import Input from 'common/components/Input'
+import Button from 'common/components/Button'
 
 type FormValues = {
   firstName: string
