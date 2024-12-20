@@ -1,10 +1,10 @@
 import { GetStaticProps, NextPage } from 'next'
-import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { GET_ALL_POSTS } from 'common/graphql/posts'
 import { Post } from 'common/types/index'
 import Layout from 'modules/layout/components/Layout'
 import Hero from 'common/components/Hero'
 import Gallery from 'modules/gallery/components/Gallery'
+import { nhost } from 'common/utils/nhost'
 
 interface HomeProps {
   heroPost: Post
@@ -26,18 +26,15 @@ const Index: NextPage<HomeProps> = ({ heroPost, initialPosts }) => {
 export default Index
 
 export const getStaticProps: GetStaticProps = async () => {
-  const client = new ApolloClient({
-    uri: `${process.env.NEXT_PUBLIC_NHOST_BACKEND_URL}/v1/graphql` || '',
-    cache: new InMemoryCache()
+  const { data, error } = await nhost.graphql.request(GET_ALL_POSTS, {
+    offset: 0
   })
 
-  const { data } = await client.query({
-    query: GET_ALL_POSTS,
-    variables: { offset: 0 }
-  })
+  if (error) {
+    console.error(error)
+  }
 
-  const heroImageIndex = Math.floor(Math.random() * data.posts.length)
-  const heroImage = data.posts[heroImageIndex]
+  const heroImage = data.posts[15]
   const posts = data.posts.filter((post: Post) => post.id !== heroImage.id)
 
   return {
