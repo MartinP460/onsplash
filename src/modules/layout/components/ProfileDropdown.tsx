@@ -22,17 +22,19 @@ const ProfileDropdown = ({ user }: ProfileIconProps) => {
         <Popover.Panel className="absolute z-50 top-12 border right-0 border-text rounded bg-white py-1 shadow-lg w-[250px] md:w-[178px]">
           <ul>
             <li className="py-2 px-3 my-1 hover:bg-gray-100 transition-fast">
-              <Link href={`/profile/${user.displayName}`}>
-                <a className="block h-full no-underline text-gray-500">
-                  View profile
-                </a>
+              <Link
+                href={`/profile/${user.displayName}`}
+                className="block h-full no-underline text-gray-500"
+              >
+                View profile
               </Link>
             </li>
             <li className="py-2 px-3 my-1 hover:bg-gray-100 transition-fast">
-              <Link href="/account">
-                <a className="block h-full no-underline text-gray-500">
-                  Account
-                </a>
+              <Link
+                href="/account"
+                className="block h-full no-underline text-gray-500"
+              >
+                Account
               </Link>
             </li>
             <li className="flex justify-center px-3 py-2 md:hidden">

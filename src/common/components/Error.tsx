@@ -18,10 +18,11 @@ const Error = ({ errorType = '404 Not Found', title = '404' }: ErrorProps) => {
           You may have mistyped the address, the page has been deleted or moved
           to another URL.
         </p>
-        <Link href="/">
-          <a className="mt-4 bg-black text-white py-3 rounded px-3 transition-fast">
-            Home page
-          </a>
+        <Link
+          href="/"
+          className="mt-4 bg-black text-white py-3 rounded px-3 transition-fast"
+        >
+          Home page
         </Link>
       </div>
     </Layout>

@@ -28,7 +28,7 @@ const Thumbnail = ({ post, onImageClick }: ThumbnailProps) => {
           src={post.image.url}
           width={post.image.width}
           height={post.image.height}
-          alt={post.description}
+          alt={post.description || ''}
           objectFit="contain"
           className="z-20"
         />

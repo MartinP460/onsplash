@@ -70,10 +70,11 @@ const Menu = () => {
                   <ul className="pl-9">
                     {detail.items.map((item) => (
                       <li key={item.label} className="my-4">
-                        <Link href={item.href}>
-                          <a className="capitalize text-primary hover:text-primary-hover">
-                            {item.label}
-                          </a>
+                        <Link
+                          href={item.href}
+                          className="capitalize text-primary hover:text-primary-hover"
+                        >
+                          {item.label}
                         </Link>
                       </li>
                     ))}
@@ -93,10 +94,11 @@ const Menu = () => {
                   <ul className="pl-9">
                     {detail.items.map((item) => (
                       <li className="my-4" key={item.label}>
-                        <Link href={item.href}>
-                          <a className="capitalize text-primary hover:text-primary-hover whitespace-nowrap">
-                            {item.label}
-                          </a>
+                        <Link
+                          href={item.href}
+                          className="capitalize text-primary hover:text-primary-hover whitespace-nowrap"
+                        >
+                          {item.label}
                         </Link>
                       </li>
                     ))}

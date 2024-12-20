@@ -15,14 +15,12 @@ const Header = () => {
       <div className="flex items-center p-2 px-3 gap-3">
         <div className="flex-none">
           <Link href="/">
-            <a>
-              <Image
-                src="/images/onsplash.png"
-                width={32}
-                height={32}
-                alt="Onsplash logo"
-              />
-            </a>
+            <Image
+              src="/images/onsplash.png"
+              width={32}
+              height={32}
+              alt="Onsplash logo"
+            />
           </Link>
         </div>
         <Searchbar />

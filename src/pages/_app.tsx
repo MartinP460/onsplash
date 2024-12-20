@@ -7,20 +7,23 @@ import { nhost } from 'common/utils/nhost'
 import Toast from 'common/components/Toast'
 import SubmitModal from 'modules/submit/components/SubmitModal'
 import 'common/styles/globals.css'
+import { ErrorBoundary } from 'common/components/ErrorBoundary'
 
 const CustomApp = ({ Component, pageProps }: AppProps) => {
   return (
-    <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
-      <NhostApolloProvider nhost={nhost}>
-        <UserProvider>
-          <ToastProvider>
-            <Component {...pageProps} />
-            <Toast />
-            <SubmitModal />
-          </ToastProvider>
-        </UserProvider>
-      </NhostApolloProvider>
-    </NhostProvider>
+    <ErrorBoundary fallback="An unknown error occured.">
+      <NhostProvider nhost={nhost} initial={pageProps.nhostSession}>
+        <NhostApolloProvider nhost={nhost}>
+          <UserProvider>
+            <ToastProvider>
+              <Component {...pageProps} />
+              <Toast />
+              <SubmitModal />
+            </ToastProvider>
+          </UserProvider>
+        </NhostApolloProvider>
+      </NhostProvider>
+    </ErrorBoundary>
   )
 }
 

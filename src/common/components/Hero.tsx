@@ -15,7 +15,7 @@ const Hero = ({ post }: HeroProps) => {
         layout="fill"
         objectFit="cover"
         priority
-        alt={post.description}
+        alt={post.description || ''}
         className="-z-10 brightness-50 absolute"
       />
       <div className="h-full absolute text-white flex items-end pb-4 px-4">
